@@ -27,7 +27,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build:lib": "mkdirp build && webpack --progress --colors",
-    "build:min": "mkdirp build && cross-env LMD_ENV=production webpack -p --progress --colors"
+    "build:min": "mkdirp build && cross-env LMD_ENV=production webpack -p --progress --colors",
+    "prepublish": "npm run build"
   },
   "babel": {
     "presets": [
