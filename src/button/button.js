@@ -1,5 +1,6 @@
 import React from "react";
 import glamorous from "glamorous";
+import {elevation, elevationTransition} from "../elevation";
 
 const ripple = {
   position: "relative",
@@ -60,26 +61,38 @@ export default ({ theme }) => {
     a: {},
     flat: {
       borderWidth: 0,
-      primary: {
-        backgroundColor: palette.alternateTextColor,
-        color: palette.primary1
-      },
-      accent: {
-        backgroundColor: palette.alternateTextColor,
-        color: palette.accent1
-      }
+    },
+    flatPrimary: {
+      backgroundColor: palette.alternateTextColor,
+      color: palette.primary1
+    },
+    flatAccent: {
+      backgroundColor: palette.alternateTextColor,
+      color: palette.accent1
     },
     raised: {
-      border: `1px solid ${palette.borderColor}`,
-      boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 6px, rgba(0, 0, 0, 0.1) 0px 1px 4px",
-      primary: {
-        backgroundColor: palette.primary1,
-        color: palette.alternateTextColor
-      },
-      accent: {
-        backgroundColor: palette.accent1,
-        color: palette.alternateTextColor
+      boxShadow: elevation(2),
+      transition: elevationTransition(),
+      ':active': {
+        boxShadow: elevation(8),
       }
+    },
+    raisedPrimary: {
+      backgroundColor: palette.primary1,
+      color: palette.textPrimaryOnPrimary
+    },
+    raisedAccent: {
+      backgroundColor: palette.accent1,
+      color: palette.textPrimaryOnAccent
+    },
+    disabled: {
+      color: "rgba(0, 0, 0, .26)",
+      cursor: "default",
+      pointerEvents: "none",
+      boxShadow: elevation(0),
+    },
+    raisedDisabled: {
+      backgroundColor: 'rgba(0, 0, 0, .12)'
     }
   };
   const ButtonView = glamorous("button")(styles.root, styles.button);
@@ -90,19 +103,22 @@ export default ({ theme }) => {
       primary,
       accent,
       raised,
+      disabled,
       href,
       icon,
       children,
       ...otherProps
     } = props;
     const TheButton = glamorous(href ? AnchorView : ButtonView)(
+
       raised ? styles.raised : styles.flat,
-      !raised && primary && styles.flat.primary,
-      !raised && accent && styles.flat.accent,
-      raised && primary && styles.raised.primary,
-      raised && accent && styles.raised.accent,
-      accent && styles.accent,
-      ripple
+      !raised && primary && styles.flatPrimary,
+      !raised && accent && styles.flatAccent,
+      raised && primary && styles.raisedPrimary,
+      raised && accent && styles.raisedAccent,
+      ripple,
+      disabled && styles.disabled,
+      disabled && raised && styles.raisedDisabled,
     );
 
     return (

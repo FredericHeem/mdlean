@@ -7,6 +7,8 @@ const context = {
     palette: {
       backgroundColor: "#ffffff",
       textPrimary: "#000000",
+      textPrimaryOnPrimary: "#000000",
+      textPrimaryOnAccent: "#000000",
       primary1: "#00bcd4",
       primary3: "#bdbdbd",
       accent1: "#ff4081",
@@ -36,7 +38,10 @@ class App extends Component {
         </p>
         <h3>Disabled</h3>
         <p>
-          <Button disabled>disabled</Button>
+          <Button disabled>disabled FLAT</Button>
+          <Button disabled primary>disabled FLAT PRIMARY</Button>
+          <Button disabled accent>disabled FLAT accent</Button>
+
           <Button disabled raised>disabled raised</Button>
           <Button disabled raised primary>disabled RAISED PRIMARY</Button>
           <Button disabled raised accent>disabled RAISED accent</Button>
