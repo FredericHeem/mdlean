@@ -1,6 +1,6 @@
 {
   "name": "mdlean",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "dependencies": {
     "glamor": "*",
@@ -8,9 +8,7 @@
     "react": "*",
     "react-dom": "*"
   },
-  "peerDependencies": {
-    
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.24.1",
