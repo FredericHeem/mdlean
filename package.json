@@ -9,7 +9,7 @@
     "react-dom": "*"
   },
   "peerDependencies": {
-
+    
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",

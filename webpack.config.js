@@ -9,6 +9,7 @@ const OUT_PATH = path.resolve("./build");
 const PUBLIC_PATH = "/assets/";
 const IS_DEV = process.env.LMD_ENV === "development";
 const IS_PROD = process.env.LMD_ENV === "production";
+const pkg = require('./package.json');
 
 const LIFECYCLE_EVENT = process.env.npm_lifecycle_event;
 if (LIFECYCLE_EVENT == "test" || LIFECYCLE_EVENT == "test:watch") {
@@ -23,7 +24,7 @@ module.exports = [
       //base: [path.resolve('./index.js')],
     },
 
-    externals: ["react", "glamorous", "glamour"],
+    externals: Object.keys(pkg.dependencies),
     output: {
       path: OUT_PATH,
       publicPath: PUBLIC_PATH,
