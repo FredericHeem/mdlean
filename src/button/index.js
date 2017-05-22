@@ -1,5 +1,5 @@
 
-import buttom from './button';
-export default buttom;
+import button from './button';
+export default button;
 
 

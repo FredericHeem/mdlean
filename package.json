@@ -2,12 +2,14 @@
   "name": "mdlean",
   "version": "0.1.0",
   "private": false,
-  "dependencies": {},
-  "peerDependencies": {
+  "dependencies": {
     "glamor": "*",
     "glamorous": "*",
     "react": "*",
     "react-dom": "*"
+  },
+  "peerDependencies": {
+
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",

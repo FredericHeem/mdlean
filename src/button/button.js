@@ -1,8 +1,8 @@
 import React from "react";
 import glamorous from "glamorous";
-import {elevation, elevationTransition} from "../elevation";
+import { elevation, elevationTransition } from "../elevation";
 
-const ripple = {
+const styleRipple = {
   position: "relative",
   overflow: "hidden",
   transform: "translate3d(0, 0, 0)",
@@ -53,14 +53,37 @@ export default ({ theme }) => {
       overflow: "hidden",
       boxSizing: "border-box",
       userSelect: "none",
-      transition: "background-color 0.3s"
+      transition: "background-color 0.3s",
+      ":before": {
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
+        position: "absolute",
+        top: "calc(50% - 100%)",
+        left: "calc(50% - 100%)",
+        width: "200%",
+        height: "200%",
+        transition: "opacity 250ms linear",
+        borderRadius: "50%",
+        opacity: 0,
+        pointerEvents: "none",
+        content: '""'
+      },
+      ":hover": {
+        ":before": {
+          opacity: 0.5
+        }
+      },
+      ":active": {
+        ":before": {
+          opacity: 1
+        }
+      }
     },
     button: {
       cursor: "pointer"
     },
     a: {},
     flat: {
-      borderWidth: 0,
+      borderWidth: 0
     },
     flatPrimary: {
       backgroundColor: palette.alternateTextColor,
@@ -73,8 +96,8 @@ export default ({ theme }) => {
     raised: {
       boxShadow: elevation(2),
       transition: elevationTransition(),
-      ':active': {
-        boxShadow: elevation(8),
+      ":active": {
+        boxShadow: elevation(8)
       }
     },
     raisedPrimary: {
@@ -89,10 +112,10 @@ export default ({ theme }) => {
       color: "rgba(0, 0, 0, .26)",
       cursor: "default",
       pointerEvents: "none",
-      boxShadow: elevation(0),
+      boxShadow: elevation(0)
     },
     raisedDisabled: {
-      backgroundColor: 'rgba(0, 0, 0, .12)'
+      backgroundColor: "rgba(0, 0, 0, .12)"
     }
   };
   const ButtonView = glamorous("button")(styles.root, styles.button);
@@ -104,21 +127,21 @@ export default ({ theme }) => {
       accent,
       raised,
       disabled,
+      ripple,
       href,
       icon,
       children,
       ...otherProps
     } = props;
     const TheButton = glamorous(href ? AnchorView : ButtonView)(
-
       raised ? styles.raised : styles.flat,
       !raised && primary && styles.flatPrimary,
       !raised && accent && styles.flatAccent,
       raised && primary && styles.raisedPrimary,
       raised && accent && styles.raisedAccent,
-      ripple,
+      ripple && styleRipple,
       disabled && styles.disabled,
-      disabled && raised && styles.raisedDisabled,
+      disabled && raised && styles.raisedDisabled
     );
 
     return (
