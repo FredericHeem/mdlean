@@ -2,8 +2,7 @@
   "name": "mdlean",
   "version": "0.1.0",
   "private": false,
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "glamor": "*",
     "glamorous": "*",
@@ -17,6 +16,7 @@
     "cross-env": "^5.0.0",
     "react-scripts": "1.0.0",
     "webpack": "^2.5.1",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
