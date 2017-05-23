@@ -86,12 +86,12 @@ export default ({ theme }) => {
       borderWidth: 0
     },
     flatPrimary: {
-      backgroundColor: palette.alternateTextColor,
-      color: palette.primary1
+      backgroundColor: palette.textPrimaryOnPrimary,
+      color: palette.primary
     },
     flatAccent: {
-      backgroundColor: palette.alternateTextColor,
-      color: palette.accent1
+      backgroundColor: palette.textPrimaryOnAccent,
+      color: palette.accent
     },
     raised: {
       boxShadow: elevation(2),
@@ -101,11 +101,11 @@ export default ({ theme }) => {
       }
     },
     raisedPrimary: {
-      backgroundColor: palette.primary1,
+      backgroundColor: palette.primary,
       color: palette.textPrimaryOnPrimary
     },
     raisedAccent: {
-      backgroundColor: palette.accent1,
+      backgroundColor: palette.accent,
       color: palette.textPrimaryOnAccent
     },
     disabled: {
