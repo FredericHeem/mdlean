@@ -116,13 +116,27 @@ export default ({ theme }) => {
     },
     raisedDisabled: {
       backgroundColor: "rgba(0, 0, 0, .12)"
+    },
+    fullWidth: {
+      textAlign: "center",
+      width: "100%"
+    },
+    label: {
+      width: "100%"
+    },
+    icon: {
+      padding: "0.4rem"
     }
   };
   const ButtonView = glamorous("button")(styles.root, styles.button);
   const AnchorView = glamorous("a")(styles.root, styles.a);
+  const IconView = glamorous('span')(styles.icon);
+  const LabelView = glamorous("span")(styles.label);
 
   return function Button(props) {
     const {
+      fullWidth,
+      label,
       primary,
       accent,
       raised,
@@ -141,12 +155,14 @@ export default ({ theme }) => {
       raised && accent && styles.raisedAccent,
       ripple && styleRipple,
       disabled && styles.disabled,
-      disabled && raised && styles.raisedDisabled
+      disabled && raised && styles.raisedDisabled,
+      fullWidth && styles.fullWidth
     );
 
     return (
       <TheButton href={href} {...otherProps}>
-        {children}
+        {icon && <IconView>{icon}</IconView>}
+        {label && <LabelView>{label}</LabelView>} {children}
       </TheButton>
     );
   };
