@@ -30,7 +30,7 @@
     "build:babel": "babel src --out-dir lib",
     "prepublish": "npm run build:babel",
     "version": "npm test",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags && npm publish"
   },
   "babel": {
     "presets": [
