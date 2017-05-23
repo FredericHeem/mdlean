@@ -10,6 +10,7 @@
   },
   "peerDependencies": {},
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -26,7 +27,8 @@
     "eject": "react-scripts eject",
     "build:lib": "webpack --progress --colors",
     "build:min": "cross-env LMD_ENV=production webpack -p --progress --colors",
-    "prepublish": "npm run build:lib"
+    "build:babel": "babel src --out-dir lib",
+    "prepublish": "npm run build:babel"
   },
   "babel": {
     "presets": [
@@ -38,13 +40,6 @@
       ],
       "react",
       "stage-0"
-    ],
-    "env": {
-      "test": {
-        "presets": [
-          "es2015"
-        ]
-      }
-    }
+    ]
   }
 }

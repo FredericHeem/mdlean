@@ -30,7 +30,7 @@ module.exports = [
       publicPath: PUBLIC_PATH,
       filename: "lmd.[name]." + (IS_PROD ? "min." : "") + "js",
       //libraryTarget: 'umd',
-      library: ["ldc", "[name]"]
+      library: ["lmd", "[name]"]
     },
     devServer: {
       disableHostCheck: true
