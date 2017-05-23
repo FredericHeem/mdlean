@@ -28,7 +28,9 @@
     "build:lib": "webpack --progress --colors",
     "build:min": "cross-env LMD_ENV=production webpack -p --progress --colors",
     "build:babel": "babel src --out-dir lib",
-    "prepublish": "npm run build:babel"
+    "prepublish": "npm run build:babel",
+    "version": "npm test",
+    "postversion": "git push && git push --tags"
   },
   "babel": {
     "presets": [
