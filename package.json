@@ -1,8 +1,18 @@
 {
   "name": "mdlean",
+  "description": "Lean Material Design React Components",
   "version": "0.6.0",
+  "license": "Apache-2.0",
   "private": false,
   "homepage": "https://fredericheem.github.io/mdlean/",
+  "keywords": [
+    "components",
+    "react",
+    "react-component",
+    "material design",
+    "glamorous",
+    "theme"
+  ],
   "dependencies": {
     "glamor": "*",
     "glamorous": "*",
