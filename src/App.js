@@ -1,18 +1,60 @@
 import React, { Component } from "react";
+import { action } from "mobx";
+import { observable } from "mobx";
+import { observer } from "mobx-react";
 import "./App.css";
 import button from "./button";
-import theme from './theme';
+import drawer from "./drawer";
+import theme from "./theme";
+import menu from "./examples/menu";
+import navBar from './examples/navBar';
+
+const store = observable({
+  drawerOpen: false,
+  toggle() {
+    this.drawerOpen = !this.drawerOpen;
+  },
+  navChange: action(function(menuItem) {
+    //browserHistory.push(menuItem.route);
+    this.drawerOpen = false;
+  })
+});
 
 const context = {
+  tr: {
+    t: v => v
+  },
   theme: theme()
 };
 
+const NavBar = navBar(context);
+const Menu = menu(context);
+const Drawer = drawer(context);
 const Button = button(context);
 
 class App extends Component {
   render() {
     return (
       <div>
+        <NavBar/>
+        <h1>Drawer</h1>
+        <Button
+          label="OPEN DRAWER"
+          raised
+          onClick={() => {
+            store.drawerOpen = true;
+          }}
+        />
+        <Drawer
+          open={store.drawerOpen}
+          onClose={() => {
+            store.drawerOpen = false;
+          }}
+        >
+          <Menu
+            navChange={item => store.navChange(item)}
+          />
+        </Drawer>
         <h1>Button</h1>
         <h3>Flat</h3>
         <p>
@@ -68,4 +110,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default observer(App);
