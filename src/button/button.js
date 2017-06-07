@@ -25,8 +25,7 @@ const styleRipple = {
   ":active:after": {
     transform: "scale(0,0)",
     opacity: 0.2,
-    transition: "0s",
-    backgroundColor: "red"
+    transition: "0s"
   }
 };
 
