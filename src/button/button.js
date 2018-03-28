@@ -36,6 +36,7 @@ export default ({ theme }) => {
       color: palette.textPrimary,
       display: "inline-flex",
       alignItems: "center",
+      justifyContent: "center",
       position: "relative",
       padding: "0 0.5rem",
       minWidth: "4rem",
@@ -121,7 +122,6 @@ export default ({ theme }) => {
       width: "100%"
     },
     label: {
-      width: "100%"
     },
     icon: {
       padding: "0.4rem"
