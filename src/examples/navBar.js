@@ -2,7 +2,7 @@ import React from 'react';
 import glamorous from 'glamorous';
 import drawer from '../drawer';
 //import { browserHistory } from 'react-router';
-import mobx from 'mobx';
+import {observable, action} from 'mobx';
 import { observer } from 'mobx-react';
 import menu from './menu';
 
@@ -11,12 +11,12 @@ export default context => {
   const Drawer = drawer(context);
   const Menu = menu(context);
 
-  const store = mobx.observable({
+  const store = observable({
     open: false,
     toggle(){
       this.open = !this.open;
     },
-    navChange: mobx.action(function(menuItem) {
+    navChange: action(function(menuItem) {
       //browserHistory.push(menuItem.route);
       this.open = false;
     }),
