@@ -18,7 +18,6 @@ export default context => {
   }
 
   const MenuItemView = glamorous("div")({
-    width: "100%",
     minWidth: 150
   });
 
@@ -27,7 +26,7 @@ export default context => {
     return (
       <MenuItemView>
         <Button
-          style={{ textAlign: "start" }}
+          style={{ justifyContent: "flex-start" }}
           label={menu.text}
           ripple
           fullWidth
