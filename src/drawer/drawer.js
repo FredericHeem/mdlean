@@ -11,7 +11,7 @@ export default ({ theme }) => {
     top: 0,
     left: 0,
     height: '100%',
-    transition: 'transform 0.5s ease-in-out',
+    transition: 'transform 0.3s ease-out',
   });
 
   const DrawerOverlayView = glamorous('div')({
@@ -23,7 +23,7 @@ export default ({ theme }) => {
     left: 0,
     height: '100%',
     width: '100%',
-    transition: 'opacity 0.5s ease-in-out',
+    transition: 'opacity 0.3s ease-out',
   });
 
   function Drawer({ open, onClose, children }) {
