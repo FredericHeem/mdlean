@@ -35,7 +35,13 @@
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.0",
     "gh-pages": "^1.0.0",
-    "react-scripts": "1.0.0"
+    "glamor": "*",
+    "glamorous": "^3.19.0",
+    "mobx": "^3.1.10",
+    "mobx-react": "^4.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "^1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,18 +51,12 @@
     "build:babel": "babel src --out-dir lib",
     "prepublish": "npm run build:babel",
     "version": "npm test",
-    "postversion": "git push && git push --tags && npm publish && npm run deploy",
+    "postversion":
+      "git push && git push --tags && npm publish && npm run deploy",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "babel": {
-    "presets": [
-      [
-        "es2015",
-        {}
-      ],
-      "react",
-      "stage-0"
-    ]
+    "presets": [["es2015", {}], "react", "stage-0"]
   }
 }
