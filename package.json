@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/FredericHeem/mdlean/issues"
   },
-  "dependencies": {
+  "peerDependencies": {
     "glamor": "*",
     "glamorous": "^3.19.0",
     "mobx": "^3.1.10",
