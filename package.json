@@ -1,7 +1,7 @@
 {
   "name": "mdlean",
   "description": "Lean Material Design React Components",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "license": "Apache-2.0",
   "private": false,
   "homepage": "https://fredericheem.github.io/mdlean/",
@@ -51,12 +51,18 @@
     "build:babel": "babel src --out-dir lib",
     "prepublish": "npm run build:babel",
     "version": "npm test",
-    "postversion":
-      "git push && git push --tags && npm publish && npm run deploy",
+    "postversion": "git push && git push --tags && npm publish && npm run deploy",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "babel": {
-    "presets": [["es2015", {}], "react", "stage-0"]
+    "presets": [
+      [
+        "es2015",
+        {}
+      ],
+      "react",
+      "stage-0"
+    ]
   }
 }
