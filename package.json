@@ -25,8 +25,8 @@
     "glamorous": "^3.19.0",
     "mobx": "^3.1.10",
     "mobx-react": "^4.2.1",
-    "react": "*",
-    "react-dom": "*"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
