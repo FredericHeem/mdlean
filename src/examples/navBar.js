@@ -1,5 +1,5 @@
 import React from 'react';
-import glamorous from 'glamorous';
+import styled from "@emotion/styled";
 import drawer from '../drawer';
 //import { browserHistory } from 'react-router';
 import {observable, action} from 'mobx';
@@ -22,7 +22,7 @@ export default context => {
     }),
   });
 
-  const ButtonLeftView = glamorous('button')({
+  const ButtonLeftView = styled('button')({
     margin: 10,
     background: 'transparent',
     border: 0,
@@ -47,13 +47,13 @@ export default context => {
     );
   }
 
-  const TitleView = glamorous('div')({
+  const TitleView = styled('div')({
     fontSize: 34,
     fontWeight: 'bold',
     margin: 10,
   });
 
-  const AppBarView = glamorous('div')({
+  const AppBarView = styled('div')({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',

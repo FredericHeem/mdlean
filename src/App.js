@@ -37,7 +37,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar/>
         <h1>Drawer</h1>
         <Button
           label="OPEN DRAWER"

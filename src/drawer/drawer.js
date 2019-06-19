@@ -1,30 +1,8 @@
-import React from 'react';
-import glamorous from 'glamorous';
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 
 export default ({ theme }) => {
   const { palette } = theme;
-  const DrawerView = glamorous('div')({
-    zIndex: 2,
-    position: 'absolute',
-    border: `1px solid ${palette.borderColor}`,
-    backgroundColor: `${palette.background}`,
-    top: 0,
-    left: 0,
-    height: '100%',
-    transition: 'transform 0.3s ease-out',
-  });
-
-  const DrawerOverlayView = glamorous('div')({
-    zIndex: -1,
-    position: 'absolute',
-    backgroundColor: `${palette.background}`,
-    opacity: 0,
-    top: 0,
-    left: 0,
-    height: '100%',
-    width: '100%',
-    transition: 'opacity 0.3s ease-out',
-  });
 
   function Drawer({ open, onClose, children }) {
     const tx = open ? 0 : -window.innerWidth;
@@ -32,13 +10,35 @@ export default ({ theme }) => {
     const zIndex = open ? 1 : -1;
     return (
       <div>
-        <DrawerOverlayView
+        <div
           onClick={() => onClose()}
-          css={{ zIndex: zIndex, opacity: `${opacity}` }}
+          css={{
+            zIndex: zIndex,
+            opacity: `${opacity}`,
+            position: "absolute",
+            backgroundColor: `${palette.background}`,
+            top: 0,
+            left: 0,
+            height: "100%",
+            width: "100%",
+            transition: "opacity 0.3s ease-out"
+          }}
         />
-        <DrawerView css={{ transform: `translate(${tx}px, 0px)` }}>
+        <div
+          css={{
+            transform: `translate(${tx}px, 0px)`,
+            zIndex: 2,
+            position: "absolute",
+            border: `1px solid ${palette.borderColor}`,
+            backgroundColor: `${palette.background}`,
+            top: 0,
+            left: 0,
+            height: "100%",
+            transition: "transform 0.3s ease-out"
+          }}
+        >
           {children}
-        </DrawerView>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import glamorous from "glamorous";
+import styled from "@emotion/styled";
 import button from "../button";
 
 export default context => {
@@ -17,7 +17,7 @@ export default context => {
     ];
   }
 
-  const MenuItemView = glamorous("div")({
+  const MenuItemView = styled("div")({
     minWidth: 150
   });
 
@@ -36,7 +36,7 @@ export default context => {
     );
   }
 
-  const MenuView = glamorous("div")({
+  const MenuView = styled("div")({
     padding: 0
   });
 

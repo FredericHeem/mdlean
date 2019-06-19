@@ -1,5 +1,5 @@
 import React from "react";
-import glamorous from "glamorous";
+import styled from "@emotion/styled";
 import { elevation, elevationTransition } from "../elevation";
 
 const styleRipple = {
@@ -127,10 +127,10 @@ export default ({ theme }) => {
       padding: "0.4rem"
     }
   };
-  const ButtonView = glamorous("button")(styles.root, styles.button);
-  const AnchorView = glamorous("a")(styles.root, styles.a);
-  const IconView = glamorous('span')(styles.icon);
-  const LabelView = glamorous("span")(styles.label);
+  const ButtonView = styled("button")(styles.root, styles.button);
+  const AnchorView = styled("a")(styles.root, styles.a);
+  const IconView = styled('span')(styles.icon);
+  const LabelView = styled("span")(styles.label);
 
   return function Button(props) {
     const {
@@ -146,7 +146,7 @@ export default ({ theme }) => {
       children,
       ...otherProps
     } = props;
-    const TheButton = glamorous(href ? AnchorView : ButtonView)(
+    const TheButton = styled(href ? AnchorView : ButtonView)(
       raised ? styles.raised : styles.flat,
       !raised && primary && styles.flatPrimary,
       !raised && accent && styles.flatAccent,
