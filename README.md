@@ -1,6 +1,6 @@
 Lean Material UI - a fit good looking material design component library
 
-See the [live demo](https://fredericheem.github.io/mdlean/) to find out more about these [glamorous](https://github.com/paypal/glamorous) react components.
+See the [live demo](https://fredericheem.github.io/mdlean/) to find out more about these react components.
 
 Here are the main objectives for these react components:
 * Components must be optimised for size.
@@ -12,7 +12,7 @@ Here are the main objectives for these react components:
 
 ## Installation
 
-    $ npm i --save mdlean glamorous
+    $ npm i --save mdlean
 
 # Components
 
