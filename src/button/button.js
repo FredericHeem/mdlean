@@ -29,8 +29,7 @@ const styleRipple = {
   }
 };
 
-export default ({ theme }) => {
-  const { palette } = theme;
+export default ({ palette }) => {
   const styles = {
     root: {
       color: palette.textPrimary,

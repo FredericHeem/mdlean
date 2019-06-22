@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import "./App.css";
 import button from "./button";
 import drawer from "./drawer";
-import theme from "./theme";
+import palette from "./palette";
 import menu from "./examples/menu";
 import navBar from "./examples/navBar";
 import fbIcon from "./icons/facebook.svg";
@@ -25,7 +25,7 @@ const context = {
   tr: {
     t: v => v
   },
-  theme: theme()
+  palette: palette()
 };
 
 const NavBar = navBar(context);

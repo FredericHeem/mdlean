@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 
-export default ({ theme }) => {
-  const { palette } = theme;
+export default ({ palette }) => {
 
   function Drawer({ open, onClose, children }) {
     const tx = open ? 0 : -window.innerWidth;
