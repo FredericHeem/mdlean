@@ -39,7 +39,7 @@ export default ({ palette }) => {
       position: "relative",
       padding: "0 0.5rem",
       minWidth: "4rem",
-      height: "2.5rem",
+      minHeight: "2.5rem",
       outline: "none",
       border: "none",
       borderRadius: 2,

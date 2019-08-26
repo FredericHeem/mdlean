@@ -147,6 +147,11 @@ class App extends Component {
             icon={<img style={{ backgroundColor: "white" }} src={fbIcon} width="20" />}
             label="With Icon"
           />
+          <Button
+            raised
+            icon={<img src={fbIcon} height="80" />}
+            label="With Tall Icon"
+          />
         </p>
       </div>
     );
