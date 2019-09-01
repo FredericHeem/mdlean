@@ -29,8 +29,8 @@
     "react-dom": "*"
   },
   "devDependencies": {
-    "@emotion/core": "10.0.10",
-    "@emotion/styled": "10.0.12",
+    "@emotion/core": "10.0.17",
+    "@emotion/styled": "10.0.17",
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.24.1",
