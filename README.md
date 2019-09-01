@@ -44,7 +44,7 @@ class App extends Component {
 
 ```
 
-A complete runnable example can be found at [![Edit r09GLRDw4](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/r09GLRDw4)
+A complete runnable example can be found at [![Edit r09GLRDw4](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/r09GLRDw4) [![Greenkeeper badge](https://badges.greenkeeper.io/FredericHeem/mdlean.svg)](https://greenkeeper.io/)
 
 
 
