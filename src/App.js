@@ -53,17 +53,34 @@ class App extends Component {
         <form
           css={css`
             div {
-              margin: 30px;
-              height: 40px;
             }
           `}
         >
-          <Input label="Input with value" />
-          <Input label="AutoFocus" autoFocus/>
+          <div
+            css={css`
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+            `}
+          >
+            <Input
+              label="Input with value"
+              style={css`
+                width: 200px;
+              `}
+            />
+            <Input
+              label="AutoFocus"
+              autoFocus
+              style={css`
+                width: 200px;
+              `}
+            />
+          </div>
           <Input disabled label="Disabled" />
-          <Input disabled label="Disable with value" value="myValue"/>
+          <Input disabled label="Disable with value" value="myValue" />
           <Input label="3 " />
-          <Input label="Error" error="error displayed here" value="abc"/>
+          <Input label="Error" error="error displayed here" value="abc" />
         </form>
         <Button
           label="OPEN DRAWER"

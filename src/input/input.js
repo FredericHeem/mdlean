@@ -8,7 +8,7 @@ export default ({ theme: { palette } }) => {
     "0%": { transform: "scale(0)", opacity: 0 },
     "100%": { transform: "scale(1)", opacity: 1 }
   });
-
+  /*
   const styles = {
     underline: {
       root: {
@@ -42,73 +42,97 @@ export default ({ theme: { palette } }) => {
       color: "red"
     }
   };
-  const UnderlineView = styled("hr")(styles.underline.root);
-  const UnderlineStaticView = styled(UnderlineView)(styles.underline.static);
-  const UnderlineFocusView = styled(UnderlineView)(styles.underline.focusOff);
-  const UnderlineErrorView = styled(UnderlineView)(styles.underline.errorOff);
+
   const ErrorView = styled("div")(styles.error);
+*/
+
+  const style = {
+    root: {
+      base: css`
+        position: relative;
+        min-height: 80px;
+        label {
+          position: absolute;
+          top: 20px;
+          padding: 0px 10px;
+          pointer-events: none;
+          transition: 0.5s;
+          color: ${palette.text.secondary};
+          font-size: 1rem;
+        }
+      `,
+      disabled: css`
+        > * {
+          color: ${palette.text.disabled} !important;
+        }
+      `,
+      error: css`
+        > * {
+          color: red !important;
+        }
+      `
+    },
+    input: {
+      base: css`
+        position: absolute;
+        border: none;
+        border: 1px solid ${palette.primary.light};
+        font-size: 16px;
+        box-sizing: border-box;
+        padding: 26px 10px 4px 10px;
+        outline: none;
+        width: 100%;
+        transition: 0.5s;
+        :valid,
+        :focus {
+          border: 2px solid ${palette.primary.main};
+        }
+        :valid ~ label,
+        :focus ~ label,
+        :disabled ~ label {
+          top: 8px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          color: ${palette.primary.main};
+        }
+      `,
+      disabled: css`
+        border: 2px dotted grey;
+      `,
+      error: css`
+        border: 2px solid red !important;
+      `
+    }
+  };
   return function Input(props) {
     const { id, disabled, label, onChange, error, ...otherProps } = props;
     return (
       <div
-        css={css`
-          position: relative;
-          ${disabled &&
-            `> * {
-            color: ${palette.text.disabled} !important;
-          }`}
-        `}
+        css={[
+          props.style,
+          error && style.root.error,
+          disabled && style.root.disabled,
+          style.root.base
+        ]}
       >
         <input
           name=""
           type="text"
           required="required"
           disabled={disabled}
-          css={css`
-            position: absolute;
-            border: none;
-            border: 1px solid ${palette.primary.light};
-            font-size: 16px;
-            box-sizing: border-box;
-            padding: 30px 10px 10px 10px;
-            outline: none;
-            width: 100%;
-            transition: 0.5s;
-            :valid,
-            :focus {
-              border: 2px solid ${palette.primary.main};
-            }
-            ${disabled && "border: 2px dotted grey;"} :valid ~ label,
-            :focus ~ label,
-            :disabled ~ label {
-              top: 8px;
-              font-size: 0.9rem;
-              font-weight: bold;
-              color: ${palette.primary.main};
-            }
-          `}
+          css={[style.input.base, error && style.input.error]}
           id={id}
           onChange={onChange}
           {...otherProps}
         />
         {label && (
           <label
-            css={css`
-              position: absolute;
-              top: 20px;
-              padding: 0px 10px;
-              pointer-events: none;
-              transition: 0.5s;
-              color: ${palette.text.secondary};
-              font-size: 1rem;
-              ${disabled && `color: red;`}
-            `}
             htmlFor={id}
           >
             {label}
           </label>
         )}
-        {error && <ErrorView>{error}</ErrorView>}
+        {/*error && <ErrorView>{error}</ErrorView>*/}
       </div>
     );
   };
