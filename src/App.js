@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core";
+import { Component } from "react";
 import { action } from "mobx";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
@@ -9,6 +11,8 @@ import palette from "./palette";
 import menu from "./examples/menu";
 import navBar from "./examples/navBar";
 import fbIcon from "./icons/facebook.svg";
+import input from "./input";
+import { createMuiTheme } from "@material-ui/core/styles";
 
 const store = observable({
   drawerOpen: false,
@@ -25,20 +29,42 @@ const context = {
   tr: {
     t: v => v
   },
-  palette: palette()
+  palette: palette(),
+  theme: createMuiTheme({
+    palette: {
+      primary: { main: "#3f51b5" },
+      secondary: { main: "#f50057" }
+    },
+    themeName: "Peggy went to the market"
+  })
 };
 
 const NavBar = navBar(context);
 const Menu = menu(context);
 const Drawer = drawer(context);
 const Button = button(context);
-
+const Input = input(context);
 class App extends Component {
   render() {
     return (
       <div>
-        <NavBar/>
+        <NavBar />
         <h1>Drawer</h1>
+        <form
+          css={css`
+            div {
+              margin: 30px;
+              height: 40px;
+            }
+          `}
+        >
+          <Input label="Input with value" />
+          <Input label="AutoFocus" autoFocus/>
+          <Input disabled label="Disabled" />
+          <Input disabled label="Disable with value" value="myValue"/>
+          <Input label="3 " />
+          <Input label="Error" error="error displayed here" value="abc"/>
+        </form>
         <Button
           label="OPEN DRAWER"
           raised
@@ -144,7 +170,13 @@ class App extends Component {
               color: "white"
             }}
             raised
-            icon={<img style={{ backgroundColor: "white" }} src={fbIcon} width="20" />}
+            icon={
+              <img
+                style={{ backgroundColor: "white" }}
+                src={fbIcon}
+                width="20"
+              />
+            }
             label="With Icon"
           />
           <Button
