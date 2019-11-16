@@ -65,22 +65,25 @@ class App extends Component {
           >
             <Input
               label="Input with value"
-              style={css`
-                width: 200px;
+              styles={css`
+                width: 300px;
               `}
+              
             />
             <Input
               label="AutoFocus"
               autoFocus
-              style={css`
+              styles={css`
                 width: 200px;
               `}
+              onChange={evt => {}}
+
             />
           </div>
           <Input disabled label="Disabled" />
-          <Input disabled label="Disable with value" value="myValue" />
+          <Input disabled label="Disable with value" value="myValue" onChange={evt => {}}/>
           <Input label="3 " />
-          <Input label="Error" error="error displayed here" value="abc" />
+          <Input label="Error" error="error displayed here" value="abc" onChange={evt => {}}/>
         </form>
         <Button
           label="OPEN DRAWER"
@@ -177,7 +180,7 @@ class App extends Component {
         <p>
           <Button
             raised
-            icon={<img src={fbIcon} width="20" />}
+            icon={<img src={fbIcon} width="20" alt="fb"/>}
             label="With Icon"
           />
           <Button
@@ -192,14 +195,16 @@ class App extends Component {
                 style={{ backgroundColor: "white" }}
                 src={fbIcon}
                 width="20"
+                alt="with icon"
               />
             }
             label="With Icon"
           />
           <Button
             raised
-            icon={<img src={fbIcon} height="80" />}
+            icon={<img src={fbIcon} height="80" alt="with Tall icon"/>}
             label="With Tall Icon"
+            
           />
         </p>
       </div>
