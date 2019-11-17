@@ -12,6 +12,7 @@ import menu from "./examples/menu";
 import navBar from "./examples/navBar";
 import fbIcon from "./icons/facebook.svg";
 import input from "./input";
+import checkbox from "./checkbox";
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const store = observable({
@@ -45,12 +46,30 @@ const Menu = menu(context);
 const Drawer = drawer(context);
 const Button = button(context);
 const Input = input(context);
+const Checkbox = checkbox(context);
+
 class App extends Component {
   render() {
     return (
       <div>
         <NavBar />
-        <h1>Drawer</h1>
+        <h1>Input</h1>
+        <form
+          css={css`
+            > div {
+              margin: 10px;
+            }
+          `}
+        >
+          <Checkbox
+            name="myCheckbox"
+            value={store.map.get("myCheckbox") || ""}
+            onChange={evt => {
+              store.map.set(evt.target.name, evt.target.value);
+            }}
+          />
+        </form>
+        <h1>Input</h1>
         <form
           css={css`
             > div {
@@ -120,6 +139,7 @@ class App extends Component {
             onChange={evt => {}}
           />
         </form>
+        <h1>Drawer</h1>
         <Button
           label="OPEN DRAWER"
           raised
