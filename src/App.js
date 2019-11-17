@@ -30,7 +30,7 @@ const context = {
 
 const NavBar = navBar(context);
 const CheckboxExamples = checkboxExamples(context);
-const SwitchExamples = switchExamples(context)
+const SwitchExamples = switchExamples(context);
 const InputExamples = inputExamples(context);
 const ButtonExamples = buttonExamples(context);
 const DrawerExamples = drawerExamples(context);
@@ -38,14 +38,21 @@ const DrawerExamples = drawerExamples(context);
 class App extends Component {
   render() {
     return (
-      <div>
+      <div
+        css={css`
+          section {
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 3px 3px 7px rgba(0,0,0,0.5);
+          }
+        `}
+      >
         <NavBar />
-        <DrawerExamples/>
-        <CheckboxExamples/>
-        <SwitchExamples/>
-        <InputExamples/>
-        <ButtonExamples/>
-        
+        <CheckboxExamples />
+        <SwitchExamples />
+        <InputExamples />
+        <ButtonExamples />
+        <DrawerExamples />
       </div>
     );
   }
