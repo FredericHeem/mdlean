@@ -12,7 +12,6 @@ export default ({ theme: { palette } }) => {
         font-size: 16px;
         box-sizing: border-box;
         padding: 26px 10px 4px 10px;
-        width:100%;
         outline: none;
         :valid,
         :focus {

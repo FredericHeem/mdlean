@@ -23,7 +23,7 @@ const store = observable({
     //browserHistory.push(menuItem.route);
     this.drawerOpen = false;
   }),
-  map:observable.map()
+  map: observable.map()
 });
 
 const context = {
@@ -58,17 +58,41 @@ class App extends Component {
             }
           `}
         >
+          <Input
+            label="Username"
+            name="username"
+            autoComplete="username"
+            value={store.map.get("username") || ""}
+            onChange={evt => {
+              store.map.set(evt.target.name, evt.target.value);
+            }}
+          />
+          <Input
+            label="Password"
+            type="password"
+            name="password"
+            autoComplete="current-password"
+            value={store.map.get("password") || ""}
+            onChange={evt => {
+              store.map.set(evt.target.name, evt.target.value);
+            }}
+          />
           <div
             css={css`
               width: 100%;
               display: flex;
               flex-direction: row;
+              > div {
+                margin-right: 10px;
+              }
             `}
           >
             <Input
               label="Input with value"
               styles={css`
-                width: 300px;
+                input {
+                  width: 250px;
+                }
               `}
             />
             <Input
@@ -87,19 +111,7 @@ class App extends Component {
             value="myValue"
             onChange={evt => {}}
           />
-          <Input
-            label="Username"
-            name="username"
-            value={store.map.get("username") || ""}
-            onChange={evt => {store.map.set(evt.target.name, evt.target.value)}}
-          />
-          <Input
-            label="Password"
-            type="password"
-            name="password"
-            value={store.map.get("password") || ""}
-            onChange={evt => {store.map.set(evt.target.name, evt.target.value)}}
-          />
+
           <Input label="3 " />
           <Input
             label="Error"
