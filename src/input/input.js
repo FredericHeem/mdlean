@@ -5,26 +5,22 @@ export default ({ theme: { palette } }) => {
   const style = {
     base: css`
       position: relative;
-      min-height: 60px;
-      margin: 10px;
       font-size: 1rem;
       input {
-        position: absolute;
         border-radius: 4px;
         border: 1px solid ${palette.text.secondary};
         font-size: 16px;
         box-sizing: border-box;
         padding: 26px 10px 4px 10px;
+        width:100%;
         outline: none;
-        width: 100%;
-        height: 100%;
         :valid,
         :focus {
           border: 2px solid ${palette.primary.main};
         }
-        :valid ~ label,
-        :focus ~ label,
-        :disabled ~ label {
+        :valid + label,
+        :focus + label,
+        :disabled + label {
           bottom: 75%;
           font-size: 0.9rem;
           font-weight: bold;
@@ -33,6 +29,7 @@ export default ({ theme: { palette } }) => {
       }
 
       label {
+        display:block;
         bottom: 50%;
         line-height: 0;
         position: absolute;
@@ -43,7 +40,7 @@ export default ({ theme: { palette } }) => {
       }
     `,
     disabled: css`
-      > * {
+      * {
         color: ${palette.text.disabled} !important;
       }
       input {
@@ -51,7 +48,7 @@ export default ({ theme: { palette } }) => {
       }
     `,
     error: css`
-      > * {
+      * {
         color: ${palette.error.main} !important;
       }
       input {
@@ -72,7 +69,6 @@ export default ({ theme: { palette } }) => {
         ]}
       >
         <input
-          name=""
           type="text"
           required="required"
           disabled={disabled}
@@ -81,7 +77,9 @@ export default ({ theme: { palette } }) => {
           {...otherProps}
         />
         {label && <label htmlFor={id}>{label}</label>}
-        {/*error && <ErrorView>{error}</ErrorView>*/}
+        <div>
+          {error}
+        </div>
       </div>
     );
   };

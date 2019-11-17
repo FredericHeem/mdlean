@@ -22,7 +22,8 @@ const store = observable({
   navChange: action(function(menuItem) {
     //browserHistory.push(menuItem.route);
     this.drawerOpen = false;
-  })
+  }),
+  map:observable.map()
 });
 
 const context = {
@@ -52,7 +53,8 @@ class App extends Component {
         <h1>Drawer</h1>
         <form
           css={css`
-            div {
+            > div {
+              margin: 10px;
             }
           `}
         >
@@ -68,7 +70,6 @@ class App extends Component {
               styles={css`
                 width: 300px;
               `}
-              
             />
             <Input
               label="AutoFocus"
@@ -77,13 +78,35 @@ class App extends Component {
                 width: 200px;
               `}
               onChange={evt => {}}
-
             />
           </div>
           <Input disabled label="Disabled" />
-          <Input disabled label="Disable with value" value="myValue" onChange={evt => {}}/>
+          <Input
+            disabled
+            label="Disable with value"
+            value="myValue"
+            onChange={evt => {}}
+          />
+          <Input
+            label="Username"
+            name="username"
+            value={store.map.get("username") || ""}
+            onChange={evt => {store.map.set(evt.target.name, evt.target.value)}}
+          />
+          <Input
+            label="Password"
+            type="password"
+            name="password"
+            value={store.map.get("password") || ""}
+            onChange={evt => {store.map.set(evt.target.name, evt.target.value)}}
+          />
           <Input label="3 " />
-          <Input label="Error" error="error displayed here" value="abc" onChange={evt => {}}/>
+          <Input
+            label="Error"
+            error="error displayed here"
+            value="abc"
+            onChange={evt => {}}
+          />
         </form>
         <Button
           label="OPEN DRAWER"
@@ -180,7 +203,7 @@ class App extends Component {
         <p>
           <Button
             raised
-            icon={<img src={fbIcon} width="20" alt="fb"/>}
+            icon={<img src={fbIcon} width="20" alt="fb" />}
             label="With Icon"
           />
           <Button
@@ -202,9 +225,8 @@ class App extends Component {
           />
           <Button
             raised
-            icon={<img src={fbIcon} height="80" alt="with Tall icon"/>}
+            icon={<img src={fbIcon} height="80" alt="with Tall icon" />}
             label="With Tall Icon"
-            
           />
         </p>
       </div>
