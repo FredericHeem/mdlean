@@ -6,13 +6,12 @@ export default ({ theme: { palette } }) => {
     base: css`
       width: 2rem;
       height: 2rem;
-      background-color: ${palette.grey["300"]};
       border-radius: 5px;
       appearance: none;
       outline: none;
       box-sizing: border-box;
       transition: all 0.2s ease-in-out;
-      box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
       border: 2px solid ${palette.grey["600"]};
       position: relative;
       :hover {
@@ -23,7 +22,7 @@ export default ({ theme: { palette } }) => {
       }
       :checked {
         border: 2px solid ${palette.primary.main};
-        background-color: ${palette.grey["200"]};
+        background-color: ${palette.primary.main};
       }
       ::after {
         content: "\u2718";
@@ -37,7 +36,8 @@ export default ({ theme: { palette } }) => {
         opacity: 0;
       }
       :checked::after {
-        color: ${palette.primary.main};
+        
+        color: ${palette.grey["200"]};
         opacity: 1;
       }
     `
