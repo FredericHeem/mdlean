@@ -19,19 +19,19 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const componentlist = [
   {
     name: "Input",
-    href: "#input"
+    id: "input"
   },
   {
     name: "Button",
-    href: "#button"
+    id: "button"
   },
   {
     name: "Checkbox",
-    href: "#checkbox"
+    id: "checkbox"
   },
   {
     name: "Switch",
-    href: "#switch"
+    id: "switch"
   }
 ];
 
@@ -63,7 +63,9 @@ class App extends Component {
     return (
       <div
         css={css`
+        
           section {
+            
             padding: 20px;
             margin: 0 20px 20px 20px;
             box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
@@ -73,18 +75,21 @@ class App extends Component {
         <NavBar />
         <div
           css={css`
+          margin-left: 200px;
             margin-top: 20px;
             display: flex;
           `}
         >
-          <SideBar items={componentlist} />
           <main>
+          
             <InputExamples />
             <ButtonExamples />
             <CheckboxExamples />
             <SwitchExamples />
             <DrawerExamples />
+            <SideBar items={componentlist} />
           </main>
+          
         </div>
       </div>
     );

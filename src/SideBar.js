@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
-import { useState, useEffect } from "react";
+import { jsx, css, Global } from "@emotion/core";
 import { observer } from "mobx-react";
 
 export default context => {
@@ -8,82 +7,75 @@ export default context => {
     theme: { palette }
   } = context;
 
-  const useFindElementScrolled = items => {
-    const [active, setActive] = useState(null);
-    const handleScroll = () => {
-      const top = window.pageYOffset || document.documentElement.scrollTop;
-      var sections = document.querySelectorAll("section");
-      const section = [...sections].reverse().find(section => {
-        if (top > section.offsetTop - 40) {
-          return true;
-        }
-      });
-      if (section) {
-        setActive(section.id);
-      }
-    };
-
-    useEffect(() => {
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
-
-    return active;
-  };
-
-  const Item = ({ item, active }) => (
-    <li
-      css={
-        item.href.includes(active) &&
-        css`
-          * {
-            color: ${palette.primary.contrastText};
-          }
-          background-color: ${palette.primary.main};
-        `
-      }
-    >
-      <a href={item.href}>{item.name}</a>
+  const Item = ({ item }) => (
+    <li>
+      <a href={`#${item.id}`}>{item.name}</a>
     </li>
   );
 
   const SideBar = ({ items }) => {
-    const active = useFindElementScrolled(items);
     return (
       <nav
         css={css`
+          position: fixed;
+          top: 100px;
+          left: 0;
           width: 200px;
-          margin-left:10px;
-          height: 25vh; // experiment with this value, try changing to 110vh
+          margin-left: 10px;
+          height: 25vh;
           min-height: 200px;
           min-width: 150px;
           overflow: auto;
           position: -webkit-sticky;
-          position: sticky;
-          top: 5%;
           box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
 
           ul {
             padding: 0;
             li {
               cursor: pointer;
-              padding: 10px;
+              margin: 20px 10px;
               list-style: none;
+
               a {
+                margin: 20px 0px;
+                width: 100%;
+                height: 100%;
                 text-transform: uppercase;
                 text-decoration-line: none;
-                letter-spacing: 0.2em;
-                font-weight:bold;
+                letter-spacing: 0.1em;
+                font-weight: bold;
+                color: ${palette.text.primary};
+                ::after {
+                  content: "";
+                  display: block;
+                  margin-top: 6px;
+                  height: 3px;
+                  transition: 0.5s ease-in-out;
+                  transform: translate(-100%);
+                  transform-origin: right;
+                }
               }
             }
           }
         `}
       >
+        <Global
+          styles={items.map(
+            ({ id }) => css`
+          nav a[href='#${id}']:hover,
+          section:hover[id='${id}'] ~ nav a[href='#${id}']{
+            color: ${palette.primary.main};
+            ::after {
+                  background-color: ${palette.primary.main};
+                  transform: translate(0%);
+                }
+          }
+        `
+          )}
+        />
         <ul>
           {items.map(item => (
-            <Item key={item.name} active={active} item={item} />
+            <Item key={item.name} item={item} />
           ))}
         </ul>
       </nav>
