@@ -20,11 +20,8 @@ export default context => {
           position: fixed;
           top: 100px;
           left: 0;
-          height: 25vh;
-          min-height: 200px;
           min-width: 150px;
           overflow: auto;
-          position: -webkit-sticky;
           box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
 
           ul {

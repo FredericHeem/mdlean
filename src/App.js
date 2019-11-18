@@ -64,12 +64,12 @@ class App extends Component {
       <div
         css={css`
           display: grid;
-          grid-template-columns: 20% 55% 25%;
-          grid-template-rows: 55px 1fr;
+          grid-template-columns: 180px 1fr;
+          grid-template-rows: 60px 1fr;
 
           header {
             grid-row: 1;
-            grid-column: 1 / 4;
+            grid-column: 1 / 3;
             z-index: 2;
             position: sticky;
             top: 0;
@@ -77,9 +77,9 @@ class App extends Component {
 
           main {
             grid-row: 2;
-            padding: 20px;
-            margin:  20px 20px 20px 20px;;
-            grid-column: 2 / 4;
+            padding: 10px;
+            margin-top: 20px;
+            grid-column: 2 / 3;
             section {
               padding: 10px;
               margin: 10px;
