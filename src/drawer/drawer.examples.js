@@ -25,7 +25,7 @@ export default context => {
 
   return observer(function () {
     return (
-      <section>
+      <section id="drawer">
         <h1>{tr.t("Drawer")}</h1>
         <Button
           label="OPEN DRAWER"

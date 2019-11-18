@@ -23,7 +23,7 @@ export default context => {
 
   return function CheckBoxExamples() {
     return (
-      <section>
+      <section id="checkbox">
         <h1>{tr.t("Checkbox")}</h1>
         <form
           css={css`

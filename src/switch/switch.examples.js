@@ -23,8 +23,8 @@ export default context => {
 
   return function SwitchExamples() {
     return (
-      <section>
-        <h1>{tr.t("Checkbox")}</h1>
+      <section id="switch">
+        <h1>{tr.t("Switch")}</h1>
         <form
           css={css`
             > div {

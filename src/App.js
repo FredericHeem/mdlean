@@ -1,10 +1,12 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { Component } from "react";
+import { Component, useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import "./App.css";
 import palette from "./palette";
 import navBar from "./examples/navBar";
+import sideBar from "./SideBar";
+
 import checkboxExamples from "./checkbox/checkbox.examples";
 import switchExamples from "./switch/switch.examples";
 
@@ -13,6 +15,25 @@ import buttonExamples from "./button/button.examples";
 import drawerExamples from "./drawer/drawer.examples";
 
 import { createMuiTheme } from "@material-ui/core/styles";
+
+const componentlist = [
+  {
+    name: "Input",
+    href: "#input"
+  },
+  {
+    name: "Button",
+    href: "#button"
+  },
+  {
+    name: "Checkbox",
+    href: "#checkbox"
+  },
+  {
+    name: "Switch",
+    href: "#switch"
+  }
+];
 
 const context = {
   tr: {
@@ -29,6 +50,8 @@ const context = {
 };
 
 const NavBar = navBar(context);
+const SideBar = sideBar(context);
+
 const CheckboxExamples = checkboxExamples(context);
 const SwitchExamples = switchExamples(context);
 const InputExamples = inputExamples(context);
@@ -41,18 +64,28 @@ class App extends Component {
       <div
         css={css`
           section {
-            margin: 20px;
             padding: 20px;
-            box-shadow: 3px 3px 7px rgba(0,0,0,0.5);
+            margin: 0 20px 20px 20px;
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
           }
         `}
       >
         <NavBar />
-        <CheckboxExamples />
-        <SwitchExamples />
-        <InputExamples />
-        <ButtonExamples />
-        <DrawerExamples />
+        <div
+          css={css`
+            margin-top: 20px;
+            display: flex;
+          `}
+        >
+          <SideBar items={componentlist} />
+          <main>
+            <InputExamples />
+            <ButtonExamples />
+            <CheckboxExamples />
+            <SwitchExamples />
+            <DrawerExamples />
+          </main>
+        </div>
       </div>
     );
   }

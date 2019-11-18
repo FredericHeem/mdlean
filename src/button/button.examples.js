@@ -9,7 +9,7 @@ export default context => {
 
   return function ButtonExamples() {
     return (
-      <section>
+      <section id="button">
         <h1>{tr.t("Button")}</h1>
         <form
           css={css`

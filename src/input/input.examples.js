@@ -13,7 +13,7 @@ export default context => {
 
   return function InputExamples() {
     return (
-      <section>
+      <section id="input">
         <h1>{tr.t("Input")}</h1>
         <form
           css={css`
