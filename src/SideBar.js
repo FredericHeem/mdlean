@@ -20,8 +20,6 @@ export default context => {
           position: fixed;
           top: 100px;
           left: 0;
-          width: 200px;
-          margin-left: 10px;
           height: 25vh;
           min-height: 200px;
           min-width: 150px;

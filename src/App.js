@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { Component, useState, useEffect } from "react";
+import { Component } from "react";
 import { observer } from "mobx-react";
 import "./App.css";
 import palette from "./palette";
@@ -63,34 +63,42 @@ class App extends Component {
     return (
       <div
         css={css`
-        
-          section {
-            
+          display: grid;
+          grid-template-columns: 20% 55% 25%;
+          grid-template-rows: 55px 1fr;
+
+          header {
+            grid-row: 1;
+            grid-column: 1 / 4;
+            z-index: 2;
+            position: sticky;
+            top: 0;
+          }
+
+          main {
+            grid-row: 2;
             padding: 20px;
-            margin: 0 20px 20px 20px;
-            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+            margin:  20px 20px 20px 20px;;
+            grid-column: 2 / 4;
+            section {
+              padding: 10px;
+              margin: 10px;
+              box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+
+            }
           }
         `}
       >
         <NavBar />
-        <div
-          css={css`
-          margin-left: 200px;
-            margin-top: 20px;
-            display: flex;
-          `}
-        >
-          <main>
-          
-            <InputExamples />
-            <ButtonExamples />
-            <CheckboxExamples />
-            <SwitchExamples />
-            <DrawerExamples />
-            <SideBar items={componentlist} />
-          </main>
-          
-        </div>
+
+        <main>
+          <InputExamples />
+          <ButtonExamples />
+          <CheckboxExamples />
+          <SwitchExamples />
+          <DrawerExamples />
+          <SideBar items={componentlist} />
+        </main>
       </div>
     );
   }

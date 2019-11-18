@@ -71,7 +71,7 @@ export default context => {
   }
   function NavBar() {
     return (
-      <div>
+      <header>
         <AppBar
           onLeftIconButtonTouchTap={() => {
             store.toggle();
@@ -80,7 +80,7 @@ export default context => {
         <Drawer open={store.open} onClose={() => store.toggle()}>
           <Menu navChange={item => store.navChange(item)} />
         </Drawer>
-      </div>
+      </header>
     );
   }
 
