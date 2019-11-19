@@ -31,7 +31,7 @@ export default context => {
           label="OPEN DRAWER"
           raised
           onClick={() => {
-            store.drawerOpen = true;
+            store.drawerOpen = !store.drawerOpen;
           }}
         />
         <Drawer

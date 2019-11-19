@@ -32,6 +32,10 @@ const componentlist = [
   {
     name: "Switch",
     id: "switch"
+  },
+  {
+    name: "Drawer",
+    id: "drawer"
   }
 ];
 
@@ -48,10 +52,9 @@ const context = {
     themeName: "Peggy went to the market"
   })
 };
-
+console.log(context.theme);
 const NavBar = navBar(context);
 const SideBar = sideBar(context);
-
 const CheckboxExamples = checkboxExamples(context);
 const SwitchExamples = switchExamples(context);
 const InputExamples = inputExamples(context);
@@ -83,8 +86,15 @@ class App extends Component {
             section {
               padding: 10px;
               margin: 10px;
-              box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
-
+              box-shadow: ${context.theme.shadows[10]};
+            }
+          }
+          @media (max-width: ${context.theme.breakpoints.values.sm}) {
+            nav {
+              visibility: hidden;
+            }
+            main {
+              grid-column: 1 / 3;
             }
           }
         `}
@@ -92,6 +102,7 @@ class App extends Component {
         <NavBar />
 
         <main>
+         
           <InputExamples />
           <ButtonExamples />
           <CheckboxExamples />
