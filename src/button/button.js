@@ -1,9 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import styled from "@emotion/styled";
-import { elevation, elevationTransition } from "../elevation";
 
-export default ({ theme: { palette } }) => {
+export default ({ theme: { shadows, transitions, palette } }) => {
   const styles = {
     root: css`
       color: ${palette.text.primary};
@@ -68,10 +66,13 @@ export default ({ theme: { palette } }) => {
       color: ${palette.secondary.main};
     `,
     raised: css`
-      box-shadow: ${elevation(2)};
-      transition: ${elevationTransition()};
+      box-shadow: ${shadows[2]};
+      transition: ${transitions.create(["box-shadow"], {
+        easing: transitions.easing.easeOut,
+        duration: transitions.duration.leavingScreen
+      })};
       :active {
-        box-shadow: ${elevation(8)};
+        box-shadow: ${shadows[8]};
       }
     `,
     raisedPrimary: css`
@@ -86,7 +87,7 @@ export default ({ theme: { palette } }) => {
       color: rgba(0, 0, 0, 0.26);
       cursor: default;
       pointer-events: none;
-      box-shadow: ${elevation(0)};
+      box-shadow: ${shadows[0]};
     `,
     raisedDisabled: css`
       background-color: rgba(0, 0, 0, 0.12);
@@ -127,42 +128,41 @@ export default ({ theme: { palette } }) => {
     `
   };
 
-  const ButtonView = styled("button")(styles.root, styles.button);
-  const AnchorView = styled("a")(styles.root, styles.a);
-  const IconView = styled("span")(styles.icon);
-  const LabelView = styled("span")(styles.label);
-
-  return function Button(props) {
-    const {
-      fullWidth,
-      label,
-      primary,
-      accent,
-      raised,
-      disabled,
-      ripple,
-      href,
-      icon,
-      children,
-      ...otherProps
-    } = props;
-    const TheButton = styled(href ? AnchorView : ButtonView)(
-      raised ? styles.raised : styles.flat,
-      !raised && primary && styles.flatPrimary,
-      !raised && accent && styles.flatAccent,
-      raised && primary && styles.raisedPrimary,
-      raised && accent && styles.raisedAccent,
-      ripple && styles.ripple,
-      disabled && styles.disabled,
-      disabled && raised && styles.raisedDisabled,
-      fullWidth && styles.fullWidth
-    );
-
-    return (
-      <TheButton href={href} {...otherProps}>
-        {icon && <IconView>{icon}</IconView>}
-        {label && <LabelView>{label}</LabelView>} {children}
-      </TheButton>
+  return function Button({
+    fullWidth,
+    label,
+    primary,
+    accent,
+    raised,
+    disabled,
+    ripple,
+    href,
+    icon,
+    children,
+    ...otherProps
+  }) {
+    return jsx(
+      href ? "a" : "button",
+      {
+        css: [
+          styles.root,
+          href ? styles.a : styles.button,
+          raised ? styles.raised : styles.flat,
+          !raised && primary && styles.flatPrimary,
+          !raised && accent && styles.flatAccent,
+          raised && primary && styles.raisedPrimary,
+          raised && accent && styles.raisedAccent,
+          ripple && styles.ripple,
+          disabled && styles.disabled,
+          disabled && raised && styles.raisedDisabled,
+          fullWidth && styles.fullWidth
+        ],
+        href: href,
+        ...otherProps
+      },
+      <span css={styles.icon}>{icon}</span>,
+      <span css={styles.label}>{label}</span>,
+      children
     );
   };
 };
