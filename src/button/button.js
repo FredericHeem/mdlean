@@ -1,134 +1,135 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { elevation, elevationTransition } from "../elevation";
 
-const styleRipple = {
-  position: "relative",
-  overflow: "hidden",
-  transform: "translate3d(0, 0, 0)",
-  ":after": {
-    content: '""',
-    display: "block",
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    top: 0,
-    left: 0,
-    pointerEvents: "none",
-    backgroundImage: "radial-gradient(circle, #000 10%, transparent 10%)",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "50%",
-    transform: "scale(10,10)",
-    opacity: 0,
-    transition: "transform .5s, opacity 1s"
-  },
-  ":active:after": {
-    transform: "scale(0,0)",
-    opacity: 0.2,
-    transition: "0s"
-  }
-};
-
-export default ({ palette }) => {
+export default ({ theme: { palette } }) => {
   const styles = {
-    root: {
-      color: palette.textPrimary,
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
-      position: "relative",
-      padding: "0 0.5rem",
-      minWidth: "4rem",
-      minHeight: "2.5rem",
-      outline: "none",
-      border: "none",
-      borderRadius: 2,
-      background: "transparent",
-      fontSize: "1rem",
-      fontWeight: 500,
-      textAlign: "center",
-      textDecoration: "none",
-      textTransform: "uppercase",
-      overflow: "hidden",
-      boxSizing: "border-box",
-      userSelect: "none",
-      transition: "background-color 0.3s",
-      ":before": {
-        backgroundColor: "rgba(0, 0, 0, 0.2)",
-        position: "absolute",
-        top: "calc(50% - 100%)",
-        left: "calc(50% - 100%)",
-        width: "200%",
-        height: "200%",
-        transition: "opacity 250ms linear",
-        borderRadius: "50%",
-        opacity: 0,
-        pointerEvents: "none",
-        content: '""'
-      },
-      ":hover": {
-        ":before": {
-          opacity: 0.5
-        }
-      },
-      ":active": {
-        ":before": {
-          opacity: 1
+    root: css`
+      color: ${palette.text.primary};
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 0 0.5rem;
+      min-width: 4rem;
+      min-height: 2.5rem;
+      outline: none;
+      border: none;
+      border-radius: 2px;
+      background: transparent;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      box-sizing: border-box;
+      user-select: none;
+      transition: background-color 0.3s;
+      ::before {
+        background-color: rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: calc(50% - 100%);
+        left: calc(50% - 100%);
+        width: 200%;
+        height: 200%;
+        transition: opacity 250ms linear;
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+        content: "";
+      }
+      :active {
+        ::before {
+          opacity: 1;
         }
       }
-    },
-    button: {
-      cursor: "pointer"
-    },
-    a: {},
-    flat: {
-      borderWidth: 0
-    },
-    flatPrimary: {
-      backgroundColor: palette.textPrimaryOnPrimary,
-      color: palette.primary
-    },
-    flatAccent: {
-      backgroundColor: palette.textPrimaryOnAccent,
-      color: palette.accent
-    },
-    raised: {
-      boxShadow: elevation(2),
-      transition: elevationTransition(),
-      ":active": {
-        boxShadow: elevation(8)
+      :hover {
+        ::before {
+          opacity: 0.5;
+        }
       }
-    },
-    raisedPrimary: {
-      backgroundColor: palette.primary,
-      color: palette.textPrimaryOnPrimary
-    },
-    raisedAccent: {
-      backgroundColor: palette.accent,
-      color: palette.textPrimaryOnAccent
-    },
-    disabled: {
-      color: "rgba(0, 0, 0, .26)",
-      cursor: "default",
-      pointerEvents: "none",
-      boxShadow: elevation(0)
-    },
-    raisedDisabled: {
-      backgroundColor: "rgba(0, 0, 0, .12)"
-    },
-    fullWidth: {
-      textAlign: "center",
-      width: "100%"
-    },
-    label: {
-    },
-    icon: {
-      padding: "0.4rem"
-    }
+    `,
+
+    button: css`
+      cursor: pointer;
+    `,
+    a: css``,
+    flat: css`
+      border-width: 0;
+    `,
+    flatPrimary: css`
+      background-color: ${palette.primary.contrastText};
+      color: ${palette.primary.main};
+    `,
+    flatAccent: css`
+      background-color: ${palette.secondary.contrastText};
+      color: ${palette.secondary.main};
+    `,
+    raised: css`
+      box-shadow: ${elevation(2)};
+      transition: ${elevationTransition()};
+      :active {
+        box-shadow: ${elevation(8)};
+      }
+    `,
+    raisedPrimary: css`
+      background-color: ${palette.primary.main};
+      color: ${palette.primary.contrastText};
+    `,
+    raisedAccent: css`
+      background-color: ${palette.secondary.main};
+      color: ${palette.secondary.contrastText};
+    `,
+    disabled: css`
+      color: rgba(0, 0, 0, 0.26);
+      cursor: default;
+      pointer-events: none;
+      box-shadow: ${elevation(0)};
+    `,
+    raisedDisabled: css`
+      background-color: rgba(0, 0, 0, 0.12);
+    `,
+    fullWidth: css`
+      text-align: center;
+      width: 100%;
+    `,
+    label: css``,
+    icon: css`
+      padding: 0.4rem;
+    `,
+    ripple: css`
+      position: relative;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+      ::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle, #000 10%, transparent 10%);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        transform: scale(10, 10);
+        opacity: 0;
+        transition: transform 0.5s, opacity 1s;
+      }
+      :active::after {
+        transform: scale(0, 0);
+        opacity: 0.2;
+        transition: 0s;
+      }
+    `
   };
+
   const ButtonView = styled("button")(styles.root, styles.button);
   const AnchorView = styled("a")(styles.root, styles.a);
-  const IconView = styled('span')(styles.icon);
+  const IconView = styled("span")(styles.icon);
   const LabelView = styled("span")(styles.label);
 
   return function Button(props) {
@@ -151,7 +152,7 @@ export default ({ palette }) => {
       !raised && accent && styles.flatAccent,
       raised && primary && styles.raisedPrimary,
       raised && accent && styles.raisedAccent,
-      ripple && styleRipple,
+      ripple && styles.ripple,
       disabled && styles.disabled,
       disabled && raised && styles.raisedDisabled,
       fullWidth && styles.fullWidth
