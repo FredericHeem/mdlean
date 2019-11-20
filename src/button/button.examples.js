@@ -13,8 +13,8 @@ export default context => {
         <h1>{tr.t("Button")}</h1>
         <form
           css={css`
-            > div {
-              margin: 10px;
+            button {
+              margin: 12px;
             }
           `}
         >

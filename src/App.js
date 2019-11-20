@@ -13,10 +13,15 @@ import switchExamples from "./switch/switch.examples";
 import inputExamples from "./input/input.examples";
 import buttonExamples from "./button/button.examples";
 import drawerExamples from "./drawer/drawer.examples";
+import modalExamples from "./modal/modal.examples";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const componentlist = [
+  {
+    name: "Modal",
+    id: "modal"
+  },
   {
     name: "Input",
     id: "input"
@@ -55,6 +60,8 @@ const context = {
 console.log(context.theme);
 const NavBar = navBar(context);
 const SideBar = sideBar(context);
+const ModalExamples = modalExamples(context);
+
 const CheckboxExamples = checkboxExamples(context);
 const SwitchExamples = switchExamples(context);
 const InputExamples = inputExamples(context);
@@ -102,7 +109,7 @@ class App extends Component {
         <NavBar />
 
         <main>
-         
+          <ModalExamples />
           <InputExamples />
           <ButtonExamples />
           <CheckboxExamples />

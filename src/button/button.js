@@ -160,8 +160,8 @@ export default ({ theme: { shadows, transitions, palette } }) => {
         href: href,
         ...otherProps
       },
-      <span css={styles.icon}>{icon}</span>,
-      <span css={styles.label}>{label}</span>,
+      icon && <span css={styles.icon}>{icon}</span>,
+      label && <span css={styles.label}>{label}</span>,
       children
     );
   };
