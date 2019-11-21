@@ -6,6 +6,7 @@ import "./App.css";
 import palette from "./palette";
 import navBar from "./examples/navBar";
 import sideBar from "./SideBar";
+import tabsExamples from "./tabs/tabs.examples";
 
 import checkboxExamples from "./checkbox/checkbox.examples";
 import switchExamples from "./switch/switch.examples";
@@ -18,6 +19,10 @@ import modalExamples from "./modal/modal.examples";
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const componentlist = [
+  {
+    name: "Tabs",
+    id: "tabs"
+  },
   {
     name: "Modal",
     id: "modal"
@@ -60,6 +65,8 @@ const context = {
 console.log(context.theme);
 const NavBar = navBar(context);
 const SideBar = sideBar(context);
+const TabsExamples = tabsExamples(context);
+
 const ModalExamples = modalExamples(context);
 
 const CheckboxExamples = checkboxExamples(context);
@@ -109,6 +116,7 @@ class App extends Component {
         <NavBar />
 
         <main>
+          <TabsExamples/>
           <ModalExamples />
           <InputExamples />
           <ButtonExamples />
