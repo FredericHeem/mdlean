@@ -10,7 +10,7 @@ export default context => {
 
   const tabDefs = [
     {
-      name: "Tab1",
+      name: "Tab11", 
       header: () => <div>TAB1</div>,
       content: () => <div>Tab1 Content</div>,
       enter: async () => console.log("tab1 enter"),
@@ -26,8 +26,7 @@ export default context => {
     {
       name: "Tab Disabled",
       disabled: true,
-      header: () => <div>Tab Disabled</div>,
-      content: () => <div>Tab Content Disabled</div>
+      header: () => <div>Tab Disabled</div>
     }
   ];
   
