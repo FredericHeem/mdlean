@@ -100,12 +100,12 @@ export default ({ theme: { shadows, palette } }) => {
     }
     function Tab() {
       return (
-        <TabRoot>
+        <div css={styles}>
           <TabHeader>
             {store.tabs.map((tab, key) => createHeaderItem(tab))}
           </TabHeader>
           <TabBody>{createBody()}</TabBody>
-        </TabRoot>
+        </div>
       );
     }
   

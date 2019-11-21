@@ -15,39 +15,9 @@ import inputExamples from "./input/input.examples";
 import buttonExamples from "./button/button.examples";
 import drawerExamples from "./drawer/drawer.examples";
 import modalExamples from "./modal/modal.examples";
-
+import {bounce} from "./animation"
 import { createMuiTheme } from "@material-ui/core/styles";
-
-const componentlist = [
-  {
-    name: "Tabs",
-    id: "tabs"
-  },
-  {
-    name: "Modal",
-    id: "modal"
-  },
-  {
-    name: "Input",
-    id: "input"
-  },
-  {
-    name: "Button",
-    id: "button"
-  },
-  {
-    name: "Checkbox",
-    id: "checkbox"
-  },
-  {
-    name: "Switch",
-    id: "switch"
-  },
-  {
-    name: "Drawer",
-    id: "drawer"
-  }
-];
+import {componentlist} from "./componentList"
 
 const context = {
   tr: {
@@ -83,6 +53,7 @@ class App extends Component {
           display: grid;
           grid-template-columns: 180px 1fr;
           grid-template-rows: 60px 1fr;
+          animation: ${bounce} 1s;
 
           header {
             grid-row: 1;
@@ -116,14 +87,14 @@ class App extends Component {
         <NavBar />
 
         <main>
-          <TabsExamples/>
+          <TabsExamples />
           <ModalExamples />
           <InputExamples />
           <ButtonExamples />
           <CheckboxExamples />
           <SwitchExamples />
           <DrawerExamples />
-          <SideBar items={componentlist} />
+          <SideBar items={componentlist()} />
         </main>
       </div>
     );
