@@ -2,6 +2,8 @@
 import { jsx, css } from "@emotion/core";
 import { Component } from "react";
 import { observer } from "mobx-react";
+import  mitt from "mitt"
+
 import "./App.css";
 import palette from "./palette";
 import navBar from "./examples/navBar";
@@ -23,6 +25,7 @@ const context = {
   tr: {
     t: v => v
   },
+  emitter: mitt(),
   palette: palette(),
   theme: createMuiTheme({
     palette: {

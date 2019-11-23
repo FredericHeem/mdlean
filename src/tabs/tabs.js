@@ -1,40 +1,62 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { observable } from "mobx";
+import { observable, action } from "mobx";
 import { observer } from "mobx-react";
 
-export default ({ theme: { shadows, palette } }) => {
+export default ({ emitter, theme: { shadows, palette } }, { tabDefs = [] }) => {
   const store = observable({
-    tabs: [],
-    active: null,
-    add(tab) {
-      const { tabs } = store;
-      if (!store.active) {
-        store.active = tab;
-        tab.enter && tab.enter();
-      }
-      tabs.push(tab);
+    tabs: tabDefs,
+    activeName: tabDefs[0].name,
+    get current() {
+      return store.tabByName(store.activeName);
     },
-    onSelect(tab) {
-      if (!tab.disabled) {
-        if (store.active && store.active.exit) {
-          store.active.exit(store.active);
-        }
-        if (tab.enter) {
-          tab.enter(tab);
-        }
-        store.active = tab;
-      }
-    },
-    isActive: tab => tab.name === store.active.name
+    tabByName: tabName => store.tabs.find(tabItem => tabName == tabItem.name),
+    isActive: tab => tab.name === store.activeName
   });
+
+  emitter.on(
+    "tab.add",
+    action(async tab => {
+      tab.enter && tab.enter();
+      store.activeName = tab.name;
+      store.tabs.push(tab);
+    })
+  );
+  emitter.on(
+    "tab.select",
+    action(async tabName => {
+      const nextTab = store.tabByName(tabName);
+      if (!nextTab) {
+        return;
+      }
+      if (store.current) {
+        const { exit } = store.current;
+        exit && exit(store.current);
+      }
+      store.activeName = nextTab.name;
+      const { enter } = store.current;
+      enter && enter();
+    })
+  );
+  emitter.on(
+    "tab.remove",
+    action(tabName => {
+      const tab = store.tabByName(tabName);
+      if (!tab) {
+        return;
+      }
+      const newTabs = store.tabs.filter(it => it.name !== tabName)
+      const nextTab = newTabs[0];
+      emitter.emit("tab.select", nextTab.name)
+      store.tabs = newTabs;
+    })
+  );
 
   const style = {
     base: css`
       display: flex;
       flex-direction: column;
-      box-sizing: border-bottom-color;
-      nav ul {
+      ul {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -48,7 +70,7 @@ export default ({ theme: { shadows, palette } }) => {
         text-align: center;
         margin: 4px;
         cursor: pointer;
-        transition: 0.2s;
+        transition: 0.2s ease-in-out;
         overflow: hidden;
         :hover {
           color: ${palette.primary.main.light};
@@ -56,12 +78,9 @@ export default ({ theme: { shadows, palette } }) => {
             transform: translateX(0%);
           }
         }
-        border-radius: 10px 10px 0px 0px;
         ::after {
-          transition: 0.1s ease-in-out;
+          transition: 0.3s ease-in-out;
           transform: translateX(-101%);
-          left: 0;
-          top: 0;
           background-color: ${palette.primary.main};
           content: "";
           margin-top: 0.3rem;
@@ -88,13 +107,14 @@ export default ({ theme: { shadows, palette } }) => {
           border: none;
           ::after {
             transform: translateX(-100%);
+            background-color: white;
           }
         }
       `
     }
   };
 
-  const TabHeaderItem = tab => (
+  const TabHeaderItem = observer(({ tab }) => (
     <li
       css={[
         style.li.base,
@@ -102,21 +122,26 @@ export default ({ theme: { shadows, palette } }) => {
         tab.disabled && style.li.disabled
       ]}
       key={tab.name}
-      onClick={() => store.onSelect(tab)}
+      onClick={() => emitter.emit("tab.select", tab.name)}
     >
-      {jsx(tab.header)}
+      {jsx(tab.header, { store, tab })}
     </li>
-  );
+  ));
 
-  const Tab = () => (
-    <div css={style.base}>
-      <nav>
-        <ul>{store.tabs.map((tab, key) => TabHeaderItem(tab))}</ul>
-      </nav>
-      <div>{store.active && jsx(store.active.content)}</div>
-    </div>
-  );
-
+  const Tab = () => {
+    return (
+      <div css={style.base}>
+        <ul>
+          {store.tabs.map(tab => (
+            <TabHeaderItem key={tab.name} tab={tab} />
+          ))}
+        </ul>
+        <div>
+          {store.current && store.current.content && jsx(store.current.content, { store })}
+        </div>
+      </div>
+    );
+  };
   return {
     store,
     View: observer(Tab)
