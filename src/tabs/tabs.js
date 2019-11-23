@@ -33,32 +33,49 @@ export default ({ theme: { shadows, palette } }) => {
     base: css`
       display: flex;
       flex-direction: column;
+      box-sizing: border-bottom-color;
       nav ul {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0rem;
         list-style: none;
-        border-bottom: 2px solid ${palette.primary.main};
       }
     `,
     li: {
       base: css`
-        padding: 1rem;
         flex-grow: 1;
         text-align: center;
+        margin: 4px;
         cursor: pointer;
-        transition: 0.5s;
+        transition: 0.2s;
+        overflow: hidden;
         :hover {
-          background-color: ${palette.primary.light};
-          color: ${palette.primary.contrastText};
+          color: ${palette.primary.main.light};
+          ::after {
+            transform: translateX(0%);
+          }
         }
         border-radius: 10px 10px 0px 0px;
+        ::after {
+          transition: 0.1s ease-in-out;
+          transform: translateX(-101%);
+          left: 0;
+          top: 0;
+          background-color: ${palette.primary.main};
+          content: "";
+          margin-top: 0.3rem;
+          height: 0.4rem;
+          width: 100%;
+          display: block;
+        }
       `,
       active: css`
-        background-color: ${palette.primary.main};
-        color: ${palette.primary.contrastText};
-        box-shadow: ${shadows[10]};
+        color: ${palette.primary.main};
+        ::after {
+          background-color: ${palette.primary.main};
+          transform: translateX(0%);
+        }
       `,
       disabled: css`
         cursor: not-allowed;
@@ -68,6 +85,10 @@ export default ({ theme: { shadows, palette } }) => {
         :hover {
           color: ${palette.text.disabled};
           background-color: white;
+          border: none;
+          ::after {
+            transform: translateX(-100%);
+          }
         }
       `
     }
@@ -87,14 +108,14 @@ export default ({ theme: { shadows, palette } }) => {
     </li>
   );
 
-  const  Tab = () => (
+  const Tab = () => (
     <div css={style.base}>
       <nav>
         <ul>{store.tabs.map((tab, key) => TabHeaderItem(tab))}</ul>
       </nav>
       <div>{store.active && jsx(store.active.content)}</div>
     </div>
-  )
+  );
 
   return {
     store,
