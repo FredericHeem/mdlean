@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import select from "../select";
-import * as faker from "faker";
 
 export default context => {
 
@@ -17,7 +16,7 @@ export default context => {
         align-items: center;
         justify-content: space-around;
         > div {
-          margin: 0.4rem;
+          padding: 1rem;
         }
       `}
     >

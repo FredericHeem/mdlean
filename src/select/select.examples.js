@@ -8,7 +8,7 @@ import selectCurrency from "./examples/selectCurrency"
 export default context => {
   const { tr } = context;
   const store = observable({
-    currency: {code: "EUR"},
+    currency: {},
     country:""
   });
 

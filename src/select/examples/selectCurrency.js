@@ -1,33 +1,22 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import select from "../select";
+import * as faker from "faker";
 
 export default context => {
-
-  const currencies = [
-    { code: "GBP", flag: "🇬🇧" },
-    { code: "EUR", flag: "🇪🇺" }
-  ];
-
+  const currencies = Array(30)
+    .fill("")
+    .map((v, k) => ({ code: faker.finance.currencyName() }))
+    .sort((a, b) => a.code.localeCompare(b.code));
   const Item = ({ item }) => (
     <div
       css={css`
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        > div {
-          margin: 0.4rem;
-        }
+        padding: 0.9rem;
       `}
     >
-      <div>{item.code}</div>
-      <div
-        css={css`
-          font-size: 1.8rem;
-        `}
-      >
-        {item.flag}
-      </div>
+      {item.code}
     </div>
   );
 
@@ -35,7 +24,7 @@ export default context => {
     items: currencies,
     renderItems: Item,
     cssOveride: css`
-      width: 100px;
+      width: 200px;
     `
   });
 

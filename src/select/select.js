@@ -85,6 +85,8 @@ export default (
           outline:none;
           font-size:1.2rem;
           width: 100%;
+          cursor: pointer;
+          text-overflow: ellipsis;
         }
       }
       ul {
@@ -97,6 +99,8 @@ export default (
         padding: 0;
         margin: 0;
         box-shadow: ${shadows[4]};
+        max-height:80vh;
+        overflow-y:scroll;
         li {
           position: relative;
           background-color: white;
@@ -108,8 +112,8 @@ export default (
             position: absolute;
             top: 0;
             left: 0px;
-            height: 100%;
             width: 0px;
+            height: 100%;
           }
         }
         li:hover,
@@ -121,8 +125,8 @@ export default (
         li:hover::before,
         li.selected::before {
           background-color: ${palette.primary.main};
-          width: 5px;
-          left: -5px;
+          width:8px;
+          
         }
       }
     `,
@@ -151,7 +155,6 @@ export default (
   ));
 
   const Select = observer(({ placeHolder, value, onSelected }) => {
-    console.log("Select");
     return (
       <div css={[style.base, store.open && style.show, cssOveride]}>
         <div
