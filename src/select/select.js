@@ -11,7 +11,7 @@ export default (
     items: items,
     selectedIndex: -1,
     selected: {},
-    open: true,
+    open: false,
     keyCode: "",
     menuToggle() {
       store.open = !store.open;
@@ -34,6 +34,7 @@ export default (
     },
     onKeyDown(e, onSelected) {
       store.keyCode = e.keyCode;
+      console.log("store.selectedIndex ", store.selectedIndex);
       switch (e.keyCode) {
         case 40: // Down
           if (store.selectedIndex <= store.items.length) {
@@ -48,7 +49,10 @@ export default (
         case 13: // Enter
           if (store.selectedIndex >= 0) {
             store.onClickItem(store.items[store.selectedIndex], onSelected);
+          } else {
+            store.open = true
           }
+
           break;
         default:
       }
@@ -59,6 +63,7 @@ export default (
     base: css`
       position: relative;
       display: inline-block;
+      transition: 0.3s ease-in-out;
       box-shadow: ${shadows[2]};
       :hover {
         box-shadow: ${shadows[4]};
@@ -72,7 +77,7 @@ export default (
         padding: 8px;
         cursor: pointer;
         ::after {
-          content: "\u25BC";
+          content: "\u25BE";
           line-height: 1.2rem;
           height: 1.2rem;
           width: 1.2rem;
@@ -83,8 +88,7 @@ export default (
       ul {
         position: absolute;
         background-color: white;
-        width: 100%;
-        transition: 0.5s;
+        transition: 0.3s ease-in-out;
         transform: scaleY(0);
         transform-origin: 0 0;
         list-style: none;
@@ -93,27 +97,31 @@ export default (
         margin: 0;
         box-shadow: ${shadows[4]};
         li {
-          padding: 10px;
           position: relative;
+          background-color: white;
           box-shadow: ${shadows[1]};
           transition: 0.5s;
-          :hover {
-            box-shadow: ${shadows[4]};
-          }
-          :hover::before {
-            background-color: ${palette.primary.main};
-            width: 5px;
-          }
-          
           ::before {
             content: "";
             transition: 0.4s;
             position: absolute;
             top: 0;
-            left: 0;
+            left: 0px;
             height: 100%;
             width: 0px;
           }
+        }
+        li:hover,
+        li.selected {
+          box-shadow: ${shadows[4]};
+          transform:scale(1.05)
+        }
+
+        li:hover::before,
+        li.selected::before {
+          background-color: ${palette.primary.main};
+          width: 5px;
+          left: -5px;
         }
       }
     `,
@@ -129,11 +137,13 @@ export default (
     `
   };
 
-  const Item = observer(({ item, onSelected }) => (
+  const Item = observer(({ item, index, onSelected }) => (
     <li
-      css={[store.isSelected(item) && style.li.active]}
+      className={store.isSelected(index) && "selected"}
       key={item.name}
-      onClick={() => {store.onClickItem(item, onSelected)}}
+      onClick={() => {
+        store.onClickItem(item, onSelected);
+      }}
     >
       {jsx(renderItems, { store, item })}
     </li>
@@ -143,10 +153,21 @@ export default (
     console.log("Select");
     return (
       <div css={[style.base, store.open && style.show]}>
-        <div onClick={store.menuToggle}>{value || placeHolder}</div>
+        <div
+          tabIndex={0}
+          onKeyDown={e => store.onKeyDown(e, onSelected)}
+          onClick={store.menuToggle}
+        >
+          {value || placeHolder}
+        </div>
         <ul>
-          {store.items.map(item => (
-            <Item key={item} item={item} onSelected={onSelected}/>
+          {store.items.map((item, index) => (
+            <Item
+              key={item}
+              item={item}
+              index={index}
+              onSelected={onSelected}
+            />
           ))}
         </ul>
       </div>
