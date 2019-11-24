@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 
 export default (
   { theme: { shadows, palette } },
-  { items = [], renderItems }
+  { items = [], renderItems,  cssOveride}
 ) => {
   const store = observable({
     items: items,
@@ -72,7 +72,7 @@ export default (
       > div {
         background-color: white;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         padding: 8px;
         cursor: pointer;
@@ -152,7 +152,7 @@ export default (
   const Select = observer(({ placeHolder, value, onSelected }) => {
     console.log("Select");
     return (
-      <div css={[style.base, store.open && style.show]}>
+      <div css={[style.base, store.open && style.show, cssOveride]}>
         <div
           tabIndex={0}
           onKeyDown={e => store.onKeyDown(e, onSelected)}
