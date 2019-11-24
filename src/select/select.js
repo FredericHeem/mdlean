@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 
 export default (
   { theme: { shadows, palette } },
-  { items = [], renderItems,  cssOveride}
+  { items = [], renderItems, cssOveride }
 ) => {
   const store = observable({
     items: items,
@@ -33,8 +33,6 @@ export default (
       return store.selectedIndex === index;
     },
     onKeyDown(e, onSelected) {
-      store.keyCode = e.keyCode;
-      console.log("store.selectedIndex ", store.selectedIndex);
       switch (e.keyCode) {
         case 40: // Down
           if (store.selectedIndex <= store.items.length) {
@@ -50,7 +48,7 @@ export default (
           if (store.selectedIndex >= 0) {
             store.onClickItem(store.items[store.selectedIndex], onSelected);
           } else {
-            store.open = true
+            store.open = true;
           }
 
           break;
@@ -68,13 +66,11 @@ export default (
       :hover {
         box-shadow: ${shadows[4]};
       }
-      z-index: 0;
       > div {
-        background-color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px;
+        padding: 0.5rem;
         cursor: pointer;
         ::after {
           content: "\u25BE";
@@ -84,10 +80,15 @@ export default (
           margin: 0.4rem;
           font-size: 1.2rem;
         }
+        input {
+          border:none;
+          outline:none;
+          font-size:1.2rem;
+          width: 100%;
+        }
       }
       ul {
         position: absolute;
-        background-color: white;
         transition: 0.3s ease-in-out;
         transform: scaleY(0);
         transform-origin: 0 0;
@@ -114,7 +115,7 @@ export default (
         li:hover,
         li.selected {
           box-shadow: ${shadows[4]};
-          transform:scale(1.05)
+          transform: scale(1.05);
         }
 
         li:hover::before,
@@ -139,7 +140,7 @@ export default (
 
   const Item = observer(({ item, index, onSelected }) => (
     <li
-      className={store.isSelected(index) && "selected"}
+      className={store.isSelected(index) ? "selected" : undefined}
       key={item.name}
       onClick={() => {
         store.onClickItem(item, onSelected);
@@ -158,12 +159,12 @@ export default (
           onKeyDown={e => store.onKeyDown(e, onSelected)}
           onClick={store.menuToggle}
         >
-          {value || placeHolder}
+          <input disabled value={value} type="text" placeHolder={placeHolder}/>
         </div>
         <ul>
           {store.items.map((item, index) => (
             <Item
-              key={item}
+              key={index}
               item={item}
               index={index}
               onSelected={onSelected}

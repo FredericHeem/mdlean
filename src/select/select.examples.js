@@ -1,63 +1,19 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { observable } from "mobx";
 import { observer } from "mobx-react";
-import select from "./select";
-import * as faker from "faker";
+import { observable } from "mobx";
+import selectCountry from "./examples/selectCountry"
+import selectCurrency from "./examples/selectCurrency"
 
 export default context => {
   const { tr } = context;
   const store = observable({
-    country: "",
-    currency: ""
+    currency: {code: "EUR"},
+    country:""
   });
 
-  const countries = [
-    { code: "UK", flag: "🇬🇧" },
-    { code: "FR", flag: "🇫🇷" }
-  ];
-
-  const currencies = [
-    { code: "GBP", flag: "🇬🇧" },
-    { code: "EUR", flag: "🇪🇺" }
-  ];
-
-  const Item = ({ item }) => (
-    <div
-      css={css`
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        > div {
-          margin: 0.4rem;
-        }
-      `}
-    >
-      <div>{item.code}</div>
-      <div
-        css={css`
-          font-size: 1.8rem;
-        `}
-      >
-        {item.flag}
-      </div>
-    </div>
-  );
-
-  const SelectCountry = select(context, {
-    items: countries,
-    renderItems: Item,
-    cssOveride: css`
-      width: 180px;
-    `
-  });
-
-  store.currency = currencies[0];
-
-  const SelectCurrencies = select(context, {
-    items: currencies,
-    renderItems: Item
-  });
+  const SelectCountry = selectCountry(context)
+  const SelectCurrencies = selectCurrency(context)
 
   return observer(function() {
     return (
