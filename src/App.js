@@ -2,14 +2,15 @@
 import { jsx, css } from "@emotion/core";
 import { Component } from "react";
 import { observer } from "mobx-react";
-import  mitt from "mitt"
+import mitt from "mitt";
 
 import "./App.css";
 import palette from "./palette";
 import navBar from "./examples/navBar";
 import sideBar from "./SideBar";
-import tabsExamples from "./tabs/tabs.examples";
 
+import helloExamples from "./hello/hello.examples";
+import tabsExamples from "./tabs/tabs.examples";
 import checkboxExamples from "./checkbox/checkbox.examples";
 import switchExamples from "./switch/switch.examples";
 
@@ -17,9 +18,9 @@ import inputExamples from "./input/input.examples";
 import buttonExamples from "./button/button.examples";
 import drawerExamples from "./drawer/drawer.examples";
 import modalExamples from "./modal/modal.examples";
-import {bounce} from "./animation"
+import { bounce } from "./animation";
 import { createMuiTheme } from "@material-ui/core/styles";
-import {componentlist} from "./componentList"
+import { componentlist } from "./componentList";
 
 const context = {
   tr: {
@@ -47,6 +48,7 @@ const SwitchExamples = switchExamples(context);
 const InputExamples = inputExamples(context);
 const ButtonExamples = buttonExamples(context);
 const DrawerExamples = drawerExamples(context);
+const HelloExamples = helloExamples(context);
 
 class App extends Component {
   render() {
@@ -58,7 +60,7 @@ class App extends Component {
           grid-template-rows: 60px 1fr;
           animation: ${bounce} 1s;
 
-          header {
+          > header {
             grid-row: 1;
             grid-column: 1 / 3;
             z-index: 2;
@@ -71,7 +73,7 @@ class App extends Component {
             padding: 10px;
             margin-top: 20px;
             grid-column: 2 / 3;
-            section {
+            > section {
               padding: 10px;
               margin: 10px;
               box-shadow: ${context.theme.shadows[10]};
@@ -90,6 +92,7 @@ class App extends Component {
         <NavBar />
 
         <main>
+          <HelloExamples />
           <TabsExamples />
           <ModalExamples />
           <InputExamples />
@@ -97,6 +100,7 @@ class App extends Component {
           <CheckboxExamples />
           <SwitchExamples />
           <DrawerExamples />
+
           <SideBar items={componentlist()} />
         </main>
       </div>
