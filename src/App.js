@@ -8,7 +8,9 @@ import "./App.css";
 import palette from "./palette";
 import navBar from "./examples/navBar";
 import sideBar from "./SideBar";
+import formExamples from "./form/form.examples";
 
+import selectExamples from "./select/select.examples";
 import helloExamples from "./hello/hello.examples";
 import tabsExamples from "./tabs/tabs.examples";
 import checkboxExamples from "./checkbox/checkbox.examples";
@@ -33,12 +35,14 @@ const context = {
       primary: { main: "#3f51b5" },
       secondary: { main: "#f50057" }
     },
-    themeName: "Peggy went to the market"
+    themeName: "Peggy"
   })
 };
 console.log(context.theme);
+
 const NavBar = navBar(context);
 const SideBar = sideBar(context);
+const FormExamples = formExamples(context);
 const TabsExamples = tabsExamples(context);
 
 const ModalExamples = modalExamples(context);
@@ -49,6 +53,7 @@ const InputExamples = inputExamples(context);
 const ButtonExamples = buttonExamples(context);
 const DrawerExamples = drawerExamples(context);
 const HelloExamples = helloExamples(context);
+const SelectExamples = selectExamples(context);
 
 class App extends Component {
   render() {
@@ -92,6 +97,10 @@ class App extends Component {
         <NavBar />
 
         <main>
+          <InputExamples />
+          <FormExamples />
+          <SelectExamples />
+          <InputExamples />
           <HelloExamples />
           <TabsExamples />
           <ModalExamples />
@@ -99,8 +108,8 @@ class App extends Component {
           <ButtonExamples />
           <CheckboxExamples />
           <SwitchExamples />
-          <DrawerExamples />
-
+          <DrawerExamples />*
+          <FormExamples />
           <SideBar items={componentlist()} />
         </main>
       </div>

@@ -14,6 +14,7 @@ export default context => {
 
   const Input = input(context, {
     cssOverride: css`
+      width: 100%;
       input {
         width: 100%;
       }
@@ -46,8 +47,9 @@ export default context => {
     }),
     mapError: observable.map(),
     get isValid() {
-      return keys(store.map)
-        .every(name => !validators[name](store.map.get(name)));
+      return keys(store.map).every(
+        name => !validators[name](store.map.get(name))
+      );
     },
 
     login: action(async () => {

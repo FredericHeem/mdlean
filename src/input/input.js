@@ -8,6 +8,7 @@ export default ({ theme: { palette } }, options = {}) => {
       position: relative;
       display:inline-block;
       font-size: 1rem;
+      min-height:3rem;
       input {
         border-radius: 4px;
         border: 1px solid ${palette.text.secondary};
@@ -22,8 +23,8 @@ export default ({ theme: { palette } }, options = {}) => {
         :valid + label,
         :focus + label,
         :disabled + label {
-          bottom: 75%;
-          font-size: 0.9rem;
+          top: 1rem;
+          font-size: 0.8rem;
           font-weight: bold;
           color: ${palette.primary.main};
         }
@@ -31,7 +32,7 @@ export default ({ theme: { palette } }, options = {}) => {
 
       label {
         display:block;
-        bottom: 50%;
+        top: 1.5rem;
         line-height: 0;
         position: absolute;
         pointer-events: none;
@@ -39,13 +40,17 @@ export default ({ theme: { palette } }, options = {}) => {
         transition: 0.2s ease-in-out;
         color: ${palette.text.secondary};
       }
+      > div {
+        margin: 0.2rem 0;
+        position:absolute;
+      }
     `,
     disabled: css`
       * {
         color: ${palette.text.disabled} !important;
       }
       input {
-        border: 2px dashed ${palette.text.disabled};
+        border: 1px dashed ${palette.text.disabled};
       }
     `,
     error: css`
@@ -53,7 +58,7 @@ export default ({ theme: { palette } }, options = {}) => {
         color: ${palette.error.main} !important;
       }
       input {
-        border: 2px dashed ${palette.error.main} !important;
+        border: 1px dashed ${palette.error.main} !important;
       }
     `
   };
