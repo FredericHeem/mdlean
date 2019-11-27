@@ -89,6 +89,7 @@ export default (
         }
       }
       ul {
+        z-index:1;
         position: absolute;
         transition: 0.3s ease-in-out;
         transform: scaleY(0);
