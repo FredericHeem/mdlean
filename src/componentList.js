@@ -1,5 +1,9 @@
 export const componentlist = () => [
   {
+    name: "Form",
+    id: "form"
+  },
+  {
     name: "Select",
     id: "select"
   },

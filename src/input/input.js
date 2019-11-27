@@ -1,10 +1,12 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 
-export default ({ theme: { palette } }) => {
+export default ({ theme: { palette } }, options = {}) => {
+  
   const style = {
     base: css`
       position: relative;
+      display:inline-block;
       font-size: 1rem;
       input {
         border-radius: 4px;
@@ -64,7 +66,8 @@ export default ({ theme: { palette } }) => {
           style.base,
           disabled && style.disabled,
           error && style.error,
-          props.styles
+          props.styles,
+          options.cssOverride
         ]}
       >
         <input

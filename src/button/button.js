@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 
-export default ({ theme: { shadows, transitions, palette } }) => {
+export default ({ theme: { shadows, transitions, palette } }, options = {}) => {
   const styles = {
     root: css`
       color: ${palette.text.primary};
@@ -155,7 +155,8 @@ export default ({ theme: { shadows, transitions, palette } }) => {
           ripple && styles.ripple,
           disabled && styles.disabled,
           disabled && raised && styles.raisedDisabled,
-          fullWidth && styles.fullWidth
+          fullWidth && styles.fullWidth,
+          options.cssOverride
         ],
         href: href,
         ...otherProps

@@ -12,7 +12,6 @@ export default (
     selectedIndex: -1,
     selected: {},
     open: false,
-    keyCode: "",
     menuToggle() {
       store.open = !store.open;
     },
