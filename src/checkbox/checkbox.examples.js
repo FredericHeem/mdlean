@@ -1,16 +1,16 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { observable } from "mobx";
 
 import checkbox from "./checkbox";
 
-export default context => {
+export default (context) => {
   const { tr } = context;
   const Checkbox = checkbox(context);
 
   const store = observable({
-    map: observable.map()
+    map: observable.map(),
   });
 
   const CheckboxContainer = styled("div")`
@@ -37,7 +37,7 @@ export default context => {
               id="myCheckbox"
               name="myCheckbox"
               value={store.map.get("myCheckbox") || false}
-              onChange={evt => {
+              onChange={(evt) => {
                 store.map.set(evt.target.name, evt.target.checked);
               }}
             />
@@ -48,7 +48,7 @@ export default context => {
               id="autoplay"
               name="autoplay"
               value={store.map.get("myCheckbox") || ""}
-              onChange={evt => {
+              onChange={(evt) => {
                 store.map.set(evt.target.name, evt.target.checked);
               }}
             />
@@ -60,7 +60,7 @@ export default context => {
               disabled
               name="myCheckbox"
               value={store.map.get("myCheckbox") || ""}
-              onChange={evt => {
+              onChange={(evt) => {
                 store.map.set(evt.target.name, evt.target.checked);
               }}
             />

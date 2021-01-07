@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
 import drawer from "./drawer";
 import button from "../button";
 import menu from "../examples/menu";
 
-export default context => {
+export default (context) => {
   const { tr } = context;
 
   const store = observable({
@@ -14,9 +14,9 @@ export default context => {
     toggle() {
       this.drawerOpen = !this.drawerOpen;
     },
-    navChange: action(function(menuItem) {
+    navChange: action(function (menuItem) {
       this.drawerOpen = false;
-    })
+    }),
   });
 
   const Menu = menu(context);
@@ -40,7 +40,7 @@ export default context => {
             store.drawerOpen = false;
           }}
         >
-          <Menu navChange={item => store.navChange(item)} />
+          <Menu navChange={(item) => store.navChange(item)} />
         </Drawer>
       </section>
     );

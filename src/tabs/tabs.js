@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
 
@@ -10,13 +10,14 @@ export default ({ emitter, theme: { shadows, palette } }, { tabDefs = [] }) => {
     get current() {
       return store.tabByName(store.activeName);
     },
-    tabByName: tabName => store.tabs.find(tabItem => tabName == tabItem.name),
-    isActive: tab => tab.name === store.activeName
+    tabByName: (tabName) =>
+      store.tabs.find((tabItem) => tabName == tabItem.name),
+    isActive: (tab) => tab.name === store.activeName,
   });
 
   emitter.on(
     "tab.add",
-    action(async tab => {
+    action(async (tab) => {
       tab.enter && tab.enter();
       store.activeName = tab.name;
       store.tabs.push(tab);
@@ -24,7 +25,7 @@ export default ({ emitter, theme: { shadows, palette } }, { tabDefs = [] }) => {
   );
   emitter.on(
     "tab.select",
-    action(async tabName => {
+    action(async (tabName) => {
       const nextTab = store.tabByName(tabName);
       if (!nextTab) {
         return;
@@ -40,14 +41,14 @@ export default ({ emitter, theme: { shadows, palette } }, { tabDefs = [] }) => {
   );
   emitter.on(
     "tab.remove",
-    action(tabName => {
+    action((tabName) => {
       const tab = store.tabByName(tabName);
       if (!tab) {
         return;
       }
-      const newTabs = store.tabs.filter(it => it.name !== tabName)
+      const newTabs = store.tabs.filter((it) => it.name !== tabName);
       const nextTab = newTabs[0];
-      emitter.emit("tab.select", nextTab.name)
+      emitter.emit("tab.select", nextTab.name);
       store.tabs = newTabs;
     })
   );
@@ -110,8 +111,8 @@ export default ({ emitter, theme: { shadows, palette } }, { tabDefs = [] }) => {
             background-color: white;
           }
         }
-      `
-    }
+      `,
+    },
   };
 
   const TabHeaderItem = observer(({ tab }) => (
@@ -119,7 +120,7 @@ export default ({ emitter, theme: { shadows, palette } }, { tabDefs = [] }) => {
       css={[
         style.li.base,
         store.isActive(tab) && style.li.active,
-        tab.disabled && style.li.disabled
+        tab.disabled && style.li.disabled,
       ]}
       key={tab.name}
       onClick={() => emitter.emit("tab.select", tab.name)}
@@ -132,18 +133,20 @@ export default ({ emitter, theme: { shadows, palette } }, { tabDefs = [] }) => {
     return (
       <div css={style.base}>
         <ul>
-          {store.tabs.map(tab => (
+          {store.tabs.map((tab) => (
             <TabHeaderItem key={tab.name} tab={tab} />
           ))}
         </ul>
         <div>
-          {store.current && store.current.content && jsx(store.current.content, { store })}
+          {store.current &&
+            store.current.content &&
+            jsx(store.current.content, { store })}
         </div>
       </div>
     );
   };
   return {
     store,
-    View: observer(Tab)
+    View: observer(Tab),
   };
 };

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 
 export default ({ theme: { shadows, transitions, palette } }, options = {}) => {
   const styles = {
@@ -69,7 +69,7 @@ export default ({ theme: { shadows, transitions, palette } }, options = {}) => {
       box-shadow: ${shadows[2]};
       transition: ${transitions.create(["box-shadow"], {
         easing: transitions.easing.easeOut,
-        duration: transitions.duration.leavingScreen
+        duration: transitions.duration.leavingScreen,
       })};
       :active {
         box-shadow: ${shadows[8]};
@@ -125,7 +125,7 @@ export default ({ theme: { shadows, transitions, palette } }, options = {}) => {
         opacity: 0.2;
         transition: 0s;
       }
-    `
+    `,
   };
 
   return function Button({
@@ -156,10 +156,10 @@ export default ({ theme: { shadows, transitions, palette } }, options = {}) => {
           disabled && styles.disabled,
           disabled && raised && styles.raisedDisabled,
           fullWidth && styles.fullWidth,
-          options.cssOverride
+          options.cssOverride,
         ],
         href: href,
-        ...otherProps
+        ...otherProps,
       },
       icon && <span css={styles.icon}>{icon}</span>,
       label && <span css={styles.label}>{label}</span>,

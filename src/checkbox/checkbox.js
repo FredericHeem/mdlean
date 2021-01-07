@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 
 export default ({ theme: { palette } }) => {
   const style = {
@@ -36,11 +36,10 @@ export default ({ theme: { palette } }) => {
         opacity: 0;
       }
       :checked::after {
-        
         color: ${palette.grey["200"]};
         opacity: 1;
       }
-    `
+    `,
   };
 
   return function Checkbox(props) {

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 
 export default ({ theme: { shadows, palette } }) => {
   return function Drawer({ open, onClose, children }) {
@@ -35,7 +35,6 @@ export default ({ theme: { shadows, palette } }) => {
       <div css={style}>
         <div className="overlay" onClick={() => onClose()} />
         <div className="content">{children}</div>
-      
       </div>
     );
   };

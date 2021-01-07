@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 
 export default ({ theme: { palette } }) => {
   const style = {
-    base: css``
+    base: css``,
   };
 
   const Form = observer(({ children }) => {

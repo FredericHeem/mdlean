@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 
 export default ({ theme: { shadows, palette } }) => {
   return function Modal({ open, onClose, children }) {

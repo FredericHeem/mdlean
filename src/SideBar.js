@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, css, Global } from "@emotion/core";
+import { jsx, css, Global } from "@emotion/react";
 import { observer } from "mobx-react";
 
-export default context => {
+export default (context) => {
   const {
-    theme: { palette }
+    theme: { palette },
   } = context;
 
   const Item = ({ item }) => (
@@ -57,19 +57,19 @@ export default context => {
         <Global
           styles={items.map(
             ({ id }) => css`
-          nav a[href='#${id}']:hover,
-          section:hover[id='${id}'] ~ nav a[href='#${id}']{
-            color: ${palette.primary.main};
-            ::after {
+              nav a[href="#${id}"]:hover,
+              section:hover[id="${id}"] ~ nav a[href="#${id}"] {
+                color: ${palette.primary.main};
+                ::after {
                   background-color: ${palette.primary.main};
                   transform: translate(0%);
                 }
-          }
-        `
+              }
+            `
           )}
         />
         <ul>
-          {items.map(item => (
+          {items.map((item) => (
             <Item key={item.name} item={item} />
           ))}
         </ul>

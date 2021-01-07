@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { Component } from "react";
 import { observer } from "mobx-react";
 import mitt from "mitt";
@@ -26,17 +26,17 @@ import { componentlist } from "./componentList";
 
 const context = {
   tr: {
-    t: v => v
+    t: (v) => v,
   },
   emitter: mitt(),
   palette: palette(),
   theme: createMuiTheme({
     palette: {
       primary: { main: "#3f51b5" },
-      secondary: { main: "#f50057" }
+      secondary: { main: "#f50057" },
     },
-    themeName: "Peggy"
-  })
+    themeName: "Peggy",
+  }),
 };
 console.log(context.theme);
 

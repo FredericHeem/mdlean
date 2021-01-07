@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 
@@ -53,7 +53,7 @@ export default (
           break;
         default:
       }
-    }
+    },
   });
 
   const style = {
@@ -80,16 +80,16 @@ export default (
           font-size: 1.2rem;
         }
         input {
-          border:none;
-          outline:none;
-          font-size:1.2rem;
+          border: none;
+          outline: none;
+          font-size: 1.2rem;
           width: 100%;
           cursor: pointer;
           text-overflow: ellipsis;
         }
       }
       ul {
-        z-index:1;
+        z-index: 1;
         position: absolute;
         transition: 0.3s ease-in-out;
         transform: scaleY(0);
@@ -99,8 +99,8 @@ export default (
         padding: 0;
         margin: 0;
         box-shadow: ${shadows[4]};
-        max-height:80vh;
-        overflow-y:scroll;
+        max-height: 80vh;
+        overflow-y: scroll;
         li {
           position: relative;
           background-color: white;
@@ -125,8 +125,7 @@ export default (
         li:hover::before,
         li.selected::before {
           background-color: ${palette.primary.main};
-          width:8px;
-          
+          width: 8px;
         }
       }
     `,
@@ -139,7 +138,7 @@ export default (
       ul {
         transform: scaleY(1);
       }
-    `
+    `,
   };
 
   const Item = observer(({ item, index, onSelected }) => (
@@ -154,15 +153,15 @@ export default (
     </li>
   ));
 
-  const Select = observer(({ placeHolder, value, onSelected }) => {
+  const Select = observer(({ placeholder, value, onSelected }) => {
     return (
       <div css={[style.base, store.open && style.show, cssOveride]}>
         <div
           tabIndex={0}
-          onKeyDown={e => store.onKeyDown(e, onSelected)}
+          onKeyDown={(e) => store.onKeyDown(e, onSelected)}
           onClick={store.menuToggle}
         >
-          <input disabled value={value} type="text" placeHolder={placeHolder}/>
+          <input disabled value={value} type="text" placeholder={placeholder} />
         </div>
         <ul>
           {store.items.map((item, index) => (

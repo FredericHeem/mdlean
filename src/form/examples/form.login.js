@@ -1,15 +1,15 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { observer } from "mobx-react";
 import { observable, action, keys } from "mobx";
 import form from "../form";
 import input from "../../input";
 import button from "../../button";
 
-export default context => {
+export default (context) => {
   const {
     tr,
-    theme: { shadows }
+    theme: { shadows },
   } = context;
 
   const Input = input(context, {
@@ -18,13 +18,13 @@ export default context => {
       input {
         width: 100%;
       }
-    `
+    `,
   });
 
   const Button = button(context, {
     cssOverride: css`
       width: 100%;
-    `
+    `,
   });
 
   const validators = {
@@ -37,18 +37,18 @@ export default context => {
       if (password.length < 6) {
         return "Password too short";
       }
-    }
+    },
   };
 
   const store = observable({
     map: observable.map({
       username: "",
-      password: ""
+      password: "",
     }),
     mapError: observable.map(),
     get isValid() {
       return keys(store.map).every(
-        name => !validators[name](store.map.get(name))
+        (name) => !validators[name](store.map.get(name))
       );
     },
 
@@ -56,28 +56,28 @@ export default context => {
       console.log("login");
       const payload = {};
       //store.errorMessage = "TODO";
-    })
+    }),
   });
 
-  const onChange = evt => {
+  const onChange = (evt) => {
     store.map.set(evt.target.name, evt.target.value);
   };
 
-  const onFocus = evt => {
+  const onFocus = (evt) => {
     store.mapError.delete(evt.target.name);
   };
 
-  const onBlur = evt => {
+  const onBlur = (evt) => {
     const { value, name } = evt.target;
     if (value) {
       store.mapError.set(name, validators[name](value));
     }
   };
 
-  return observer(function() {
+  return observer(function () {
     return (
       <form
-        onClick={e => e.preventDefault()}
+        onClick={(e) => e.preventDefault()}
         css={css`
           width: 300px;
           padding: 2rem;

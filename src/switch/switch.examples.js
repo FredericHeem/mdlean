@@ -1,16 +1,16 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { observable } from "mobx";
 
 import createSwitch from "./switch";
 
-export default context => {
+export default (context) => {
   const { tr } = context;
   const Switch = createSwitch(context);
 
   const store = observable({
-    map: observable.map()
+    map: observable.map(),
   });
 
   const SwitchContainer = styled("div")`
@@ -35,7 +35,7 @@ export default context => {
           <Switch
             name="mySwitch"
             value={store.map.get("mySwitch") || ""}
-            onChange={evt => {
+            onChange={(evt) => {
               store.map.set(evt.target.name, evt.target.checked);
             }}
           />

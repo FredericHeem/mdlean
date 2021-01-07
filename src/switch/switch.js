@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 
 export default ({ theme: { palette } }) => {
   const style = {
@@ -35,7 +35,7 @@ export default ({ theme: { palette } }) => {
           background-color: ${palette.primary.main};
         }
       }
-    `
+    `,
   };
 
   return function Switch(props) {

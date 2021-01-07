@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import modal from "./modal";
 import button from "../button";
 import * as faker from "faker";
 
-export default context => {
+export default (context) => {
   const { tr } = context;
 
   const store = observable({
@@ -14,7 +14,7 @@ export default context => {
     toggle: () => (store.modalOpen = !store.modalOpen),
     close: () => {
       store.modalOpen = false;
-    }
+    },
   });
 
   const Modal = modal(context);
@@ -25,14 +25,14 @@ export default context => {
       {Array(10)
         .fill("")
         .map((v, k) => (
-          <p>
+          <p key={k}>
             {k + 1}. {faker.lorem.paragraph()}
           </p>
         ))}
     </div>
   );
 
-  return observer(function() {
+  return observer(function () {
     return (
       <section id="modal">
         <h1>{tr.t("Modal")}</h1>

@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import button from "./button";
 import fbIcon from "../icons/facebook.svg";
 
-export default context => {
+export default (context) => {
   const { tr } = context;
   const Button = button(context);
 
@@ -104,7 +104,7 @@ export default context => {
               style={{
                 width: 350,
                 background: "#4267b2",
-                color: "white"
+                color: "white",
               }}
               raised
               icon={

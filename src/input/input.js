@@ -1,14 +1,13 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 
 export default ({ theme: { palette } }, options = {}) => {
-  
   const style = {
     base: css`
       position: relative;
-      display:inline-block;
+      display: inline-block;
       font-size: 1rem;
-      min-height:3rem;
+      min-height: 3rem;
       input {
         border-radius: 4px;
         border: 1px solid ${palette.text.secondary};
@@ -31,7 +30,7 @@ export default ({ theme: { palette } }, options = {}) => {
       }
 
       label {
-        display:block;
+        display: block;
         top: 1.5rem;
         line-height: 0;
         position: absolute;
@@ -42,7 +41,7 @@ export default ({ theme: { palette } }, options = {}) => {
       }
       > div {
         margin: 0.2rem 0;
-        position:absolute;
+        position: absolute;
       }
     `,
     disabled: css`
@@ -60,7 +59,7 @@ export default ({ theme: { palette } }, options = {}) => {
       input {
         border: 1px dashed ${palette.error.main} !important;
       }
-    `
+    `,
   };
 
   return function Input(props) {
@@ -72,7 +71,7 @@ export default ({ theme: { palette } }, options = {}) => {
           disabled && style.disabled,
           error && style.error,
           props.styles,
-          options.cssOverride
+          options.cssOverride,
         ]}
       >
         <input
@@ -84,9 +83,7 @@ export default ({ theme: { palette } }, options = {}) => {
           {...otherProps}
         />
         {label && <label htmlFor={id}>{label}</label>}
-        <div>
-          {error}
-        </div>
+        <div>{error}</div>
       </div>
     );
   };

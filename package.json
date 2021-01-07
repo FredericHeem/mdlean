@@ -21,7 +21,7 @@
     "url": "https://github.com/FredericHeem/mdlean/issues"
   },
   "peerDependencies": {
-    "@emotion/core": "*",
+    "@emotion/react": "*",
     "@emotion/styled": "*",
     "mobx": "*",
     "mobx-react": "*",
@@ -29,19 +29,20 @@
     "react-dom": "*"
   },
   "devDependencies": {
-    "@emotion/core": "10.0.10",
-    "@emotion/styled": "10.0.12",
-    "babel-cli": "^6.24.1",
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "cross-env": "^5.0.0",
-    "gh-pages": "^2.0.1",
-    "mobx": "^5",
-    "mobx-react": "^6.1.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "^3.0.1"
+    "cross-env": "^7.0.3",
+    "gh-pages": "^3.1.0",
+    "mobx": "*",
+    "mobx-react": "*",
+    "np": "^7.2.0",
+    "react": "*",
+    "react-dom": "*",
+    "react-scripts": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,7 +54,8 @@
     "version": "npm test",
     "postversion": "git push && git push --tags && npm publish && npm run deploy",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "np": "np"
   },
   "babel": {
     "presets": [
@@ -76,8 +78,8 @@
     ]
   },
   "dependencies": {
-    "@material-ui/core": "^4.6.1",
-    "faker": "^4.1.0",
-    "mitt": "^1.2.0"
+    "@material-ui/core": "^4.11.2",
+    "faker": "^5.1.0",
+    "mitt": "^2.1.0"
   }
 }

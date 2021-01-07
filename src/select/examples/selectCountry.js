@@ -1,12 +1,11 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import select from "../select";
 
-export default context => {
-
+export default (context) => {
   const countries = [
     { code: "UK", flag: "🇬🇧" },
-    { code: "FR", flag: "🇫🇷" }
+    { code: "FR", flag: "🇫🇷" },
   ];
 
   const Item = ({ item }) => (
@@ -36,7 +35,7 @@ export default context => {
     renderItems: Item,
     cssOveride: css`
       width: 200px;
-    `
+    `,
   });
 
   return SelectCountry;

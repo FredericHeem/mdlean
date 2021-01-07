@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { observable } from "mobx";
 import input from "./input";
 
-export default context => {
+export default (context) => {
   const { tr } = context;
   const store = observable({
-    map: observable.map()
+    map: observable.map(),
   });
 
   const Input = input(context);
@@ -27,7 +27,7 @@ export default context => {
             name="username"
             autoComplete="username"
             value={store.map.get("username") || ""}
-            onChange={evt => {
+            onChange={(evt) => {
               store.map.set(evt.target.name, evt.target.value);
             }}
           />
@@ -37,7 +37,7 @@ export default context => {
             name="password"
             autoComplete="current-password"
             value={store.map.get("password") || ""}
-            onChange={evt => {
+            onChange={(evt) => {
               store.map.set(evt.target.name, evt.target.value);
             }}
           />
@@ -65,7 +65,7 @@ export default context => {
               styles={css`
                 width: 200px;
               `}
-              onChange={evt => {}}
+              onChange={(evt) => {}}
             />
           </div>
           <Input disabled label="Disabled" />
@@ -73,7 +73,7 @@ export default context => {
             disabled
             label="Disable with value"
             value="myValue"
-            onChange={evt => {}}
+            onChange={(evt) => {}}
           />
 
           <Input label="3 " />
@@ -81,7 +81,7 @@ export default context => {
             label="Error"
             error="error displayed here"
             value="abc"
-            onChange={evt => {}}
+            onChange={(evt) => {}}
           />
         </form>
       </section>

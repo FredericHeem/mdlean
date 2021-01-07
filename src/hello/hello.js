@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/core";
+import { jsx, css } from "@emotion/react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 
 export default ({ theme: { palette } }) => {
   const store = observable({
-    show: false
+    show: false,
   });
 
   const style = {
@@ -37,7 +37,7 @@ export default ({ theme: { palette } }) => {
       }
       section {
       }
-    `
+    `,
   };
 
   const Hello = observer(() => {
