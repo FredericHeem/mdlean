@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 import select from "../select";
 import * as faker from "faker";

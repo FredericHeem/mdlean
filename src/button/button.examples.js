@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 import button from "./button";
 import fbIcon from "../icons/facebook.svg";

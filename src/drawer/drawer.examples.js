@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";

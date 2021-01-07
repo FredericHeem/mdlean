@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
 import { jsx, css, Global } from "@emotion/react";
 import { observer } from "mobx-react";
 
