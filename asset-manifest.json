@@ -1,16 +1,21 @@
 {
   "files": {
-    "main.css": "/mdlean/static/css/main.27962427.chunk.css",
-    "main.js": "/mdlean/static/js/main.7b84194f.chunk.js",
-    "main.js.map": "/mdlean/static/js/main.7b84194f.chunk.js.map",
-    "runtime~main.js": "/mdlean/static/js/runtime~main.1f0ce3f6.js",
-    "runtime~main.js.map": "/mdlean/static/js/runtime~main.1f0ce3f6.js.map",
-    "static/js/2.aff0187a.chunk.js": "/mdlean/static/js/2.aff0187a.chunk.js",
-    "static/js/2.aff0187a.chunk.js.map": "/mdlean/static/js/2.aff0187a.chunk.js.map",
+    "main.css": "/mdlean/static/css/main.f8f081d6.chunk.css",
+    "main.js": "/mdlean/static/js/main.505bca61.chunk.js",
+    "main.js.map": "/mdlean/static/js/main.505bca61.chunk.js.map",
+    "runtime-main.js": "/mdlean/static/js/runtime-main.d9e224bd.js",
+    "runtime-main.js.map": "/mdlean/static/js/runtime-main.d9e224bd.js.map",
+    "static/js/2.ca54456f.chunk.js": "/mdlean/static/js/2.ca54456f.chunk.js",
+    "static/js/2.ca54456f.chunk.js.map": "/mdlean/static/js/2.ca54456f.chunk.js.map",
     "index.html": "/mdlean/index.html",
-    "precache-manifest.76d7e238bf959ed4858089a0ed233601.js": "/mdlean/precache-manifest.76d7e238bf959ed4858089a0ed233601.js",
-    "service-worker.js": "/mdlean/service-worker.js",
-    "static/css/main.27962427.chunk.css.map": "/mdlean/static/css/main.27962427.chunk.css.map",
-    "static/media/facebook.svg": "/mdlean/static/media/facebook.ff8f78b3.svg"
-  }
+    "static/css/main.f8f081d6.chunk.css.map": "/mdlean/static/css/main.f8f081d6.chunk.css.map",
+    "static/js/2.ca54456f.chunk.js.LICENSE.txt": "/mdlean/static/js/2.ca54456f.chunk.js.LICENSE.txt",
+    "static/media/facebook.72cbde5a.svg": "/mdlean/static/media/facebook.72cbde5a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9e224bd.js",
+    "static/js/2.ca54456f.chunk.js",
+    "static/css/main.f8f081d6.chunk.css",
+    "static/js/main.505bca61.chunk.js"
+  ]
 }
