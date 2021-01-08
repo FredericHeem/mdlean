@@ -28,13 +28,23 @@
     "react": "*",
     "react-dom": "*"
   },
+  "dependencies": {
+    "@babel/preset-react": "^7.12.10",
+    "@material-ui/core": "^4.11.2",
+    "faker": "^5.1.0",
+    "mitt": "^2.1.0"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-react-jsx": "^7.12.12",
+    "@babel/preset-env": "^7.12.11",
+    "@emotion/babel-plugin": "^11.1.2",
+    "@emotion/babel-preset-css-prop": "^11.0.0",
+    "@emotion/core": "^11.0.0",
     "@emotion/react": "*",
     "@emotion/styled": "*",
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "cross-env": "^7.0.3",
     "gh-pages": "^3.1.0",
     "mobx": "*",
@@ -57,16 +67,6 @@
     "deploy": "gh-pages -d build",
     "np": "np"
   },
-  "babel": {
-    "presets": [
-      [
-        "es2015",
-        {}
-      ],
-      "react",
-      "stage-0"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%"
@@ -76,11 +76,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "dependencies": {
-    "@emotion/core": "^11.0.0",
-    "@material-ui/core": "^4.11.2",
-    "faker": "^5.1.0",
-    "mitt": "^2.1.0"
   }
 }
