@@ -139,6 +139,9 @@ export default (
         transform: scaleY(1);
       }
     `,
+    disabled: css`
+      pointer-events: none;
+    `,
   };
 
   const Item = observer(({ item, index, onSelected }) => (
@@ -153,28 +156,44 @@ export default (
     </li>
   ));
 
-  const Select = observer(({ placeholder, value, onSelected }) => {
-    return (
-      <div css={[style.base, store.open && style.show, cssOveride]}>
+  const Select = observer(
+    ({ placeholder, value, onSelected, disabled, ...otherProps }) => {
+      return (
         <div
-          tabIndex={0}
-          onKeyDown={(e) => store.onKeyDown(e, onSelected)}
-          onClick={store.menuToggle}
+          disabled={disabled}
+          css={[
+            style.base,
+            store.open && style.show,
+            disabled && style.disabled,
+            cssOveride,
+          ]}
+          {...otherProps}
         >
-          <input disabled value={value} type="text" placeholder={placeholder} />
-        </div>
-        <ul>
-          {store.items.map((item, index) => (
-            <Item
-              key={index}
-              item={item}
-              index={index}
-              onSelected={onSelected}
+          <div
+            tabIndex={0}
+            onKeyDown={(e) => store.onKeyDown(e, onSelected)}
+            onClick={store.menuToggle}
+          >
+            <input
+              disabled
+              value={value}
+              type="text"
+              placeholder={placeholder}
             />
-          ))}
-        </ul>
-      </div>
-    );
-  });
+          </div>
+          <ul>
+            {store.items.map((item, index) => (
+              <Item
+                key={index}
+                item={item}
+                index={index}
+                onSelected={onSelected}
+              />
+            ))}
+          </ul>
+        </div>
+      );
+    }
+  );
   return Select;
 };

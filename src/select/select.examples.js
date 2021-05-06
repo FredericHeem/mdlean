@@ -13,13 +13,15 @@ export default (context) => {
   });
 
   const SelectCountry = selectCountry(context);
+  const SelectCountryDisabled = selectCountry(context);
+
   const SelectCurrencies = selectCurrency(context);
 
   return observer(function () {
     return (
       <section id="select">
         <h1>{tr.t("Select")}</h1>
-
+        <h3>SelectCountry </h3>
         <SelectCountry
           placeholder="Select a country"
           value={store.country.flag}
@@ -27,6 +29,13 @@ export default (context) => {
             store.country = item;
           }}
         />
+        <h3>SelectCountry disabled </h3>
+        <SelectCountryDisabled
+          placeholder="Select a country"
+          disabled
+          value={store.country.flag}
+        />
+        <h3>SelectCurrencies</h3>
         <SelectCurrencies
           placeholder="Select a currency"
           value={store.currency.code}
