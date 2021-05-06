@@ -50,6 +50,15 @@ A complete runnable example can be found at [![Edit r09GLRDw4](https://codesandb
 
 The package [np](https://github.com/sindresorhus/np), which stands for _npm publish_, is a nifty tool which help to release a new version.
 
+Ensure the branch _master_ is up to date:
+
+```sh
+git checkout master
+git pull
 ```
+
+Invoke `np` through the _npm_ scripts;
+
+```sh
 npm run np
 ```
