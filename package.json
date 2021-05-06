@@ -57,7 +57,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build:babel": "babel src --out-dir lib",
     "prepublish": "npm run build:babel",
