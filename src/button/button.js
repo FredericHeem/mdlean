@@ -1,7 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 
-export default ({ theme: { shadows, transitions, palette } }, options = {}) => {
+export default (
+  { theme: { shadows, transitions, palette, shape } },
+  options = {}
+) => {
   const styles = {
     root: css`
       color: ${palette.text.primary};
@@ -14,7 +17,7 @@ export default ({ theme: { shadows, transitions, palette } }, options = {}) => {
       min-height: 2.5rem;
       outline: none;
       border: none;
-      border-radius: 2px;
+      border-radius: ${shape.borderRadius}px;
       background: transparent;
       font-size: 1rem;
       font-weight: 500;

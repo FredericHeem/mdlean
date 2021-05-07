@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 
-export default ({ theme: { palette } }, options = {}) => {
+export default ({ theme }, options = {}) => {
+  const { palette, shape, shadows } = theme;
+  console.log(theme);
   const style = {
     base: css`
       position: relative;
@@ -9,12 +11,16 @@ export default ({ theme: { palette } }, options = {}) => {
       font-size: 1rem;
       min-height: 3rem;
       input {
-        border-radius: 4px;
-        border: 1px solid ${palette.text.secondary};
+        box-shadow: ${shadows[2]};
+        border-radius: ${shape.borderRadius}px;
+        border: 2px solid transparent;
         font-size: 16px;
         box-sizing: border-box;
         padding: 26px 10px 4px 10px;
         outline: none;
+        :hover {
+          box-shadow: ${shadows[4]};
+        }
         :valid,
         :focus {
           border: 2px solid ${palette.primary.main};
@@ -38,6 +44,9 @@ export default ({ theme: { palette } }, options = {}) => {
         padding: 0px 10px;
         transition: 0.2s ease-in-out;
         color: ${palette.text.secondary};
+        :focus {
+          font-style: normal;
+        }
       }
       > div {
         margin: 0.2rem 0;
@@ -61,7 +70,6 @@ export default ({ theme: { palette } }, options = {}) => {
       }
     `,
   };
-
   return function Input(props) {
     const { id, disabled, label, onChange, error, ...otherProps } = props;
     return (

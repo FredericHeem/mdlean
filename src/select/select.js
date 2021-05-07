@@ -4,7 +4,7 @@ import { observable } from "mobx";
 import { observer } from "mobx-react";
 
 export default (
-  { theme: { shadows, palette } },
+  { theme: { shadows, palette, shape } },
   { items = [], renderItems, cssOveride }
 ) => {
   const store = observable({
@@ -61,6 +61,7 @@ export default (
       position: relative;
       display: inline-block;
       transition: 0.3s ease-in-out;
+      border-radius: ${shape.borderRadius}px;
       box-shadow: ${shadows[2]};
       :hover {
         box-shadow: ${shadows[4]};
@@ -141,6 +142,9 @@ export default (
     `,
     disabled: css`
       pointer-events: none;
+      * {
+        color: ${palette.text.disabled} !important;
+      }
     `,
   };
 
