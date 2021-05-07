@@ -62,7 +62,7 @@
     "build:babel": "babel src --out-dir lib",
     "prepublish": "npm run build:babel",
     "version": "npm test",
-    "postversion": "git push && git push --tags && npm publish && npm run deploy",
+    "postversion": "git push && git push --tags && npm run deploy",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "np": "np"
