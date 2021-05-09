@@ -15,6 +15,7 @@ import helloExamples from "./hello/hello.examples";
 import tabsExamples from "./tabs/tabs.examples";
 import checkboxExamples from "./checkbox/checkbox.examples";
 import switchExamples from "./switch/switch.examples";
+import alertExamples from "./alert/alert.examples";
 
 import inputExamples from "./input/input.examples";
 import buttonExamples from "./button/button.examples";
@@ -29,6 +30,7 @@ const context = {
     t: (v) => v,
   },
   emitter: mitt(),
+
   palette: palette(),
   theme: createMuiTheme({
     palette: {
@@ -42,6 +44,8 @@ console.log(context.theme);
 
 const NavBar = navBar(context);
 const SideBar = sideBar(context);
+
+const AlertExamples = alertExamples(context);
 const FormExamples = formExamples(context);
 const TabsExamples = tabsExamples(context);
 
@@ -97,6 +101,7 @@ class App extends Component {
         <NavBar />
 
         <main>
+          <AlertExamples />
           <InputExamples />
           <FormExamples />
           <SelectExamples />
@@ -108,7 +113,7 @@ class App extends Component {
           <ButtonExamples />
           <CheckboxExamples />
           <SwitchExamples />
-          <DrawerExamples />*
+          <DrawerExamples />
           <FormExamples />
           <SideBar items={componentlist()} />
         </main>

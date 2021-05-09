@@ -1,42 +1,46 @@
 export const componentlist = () => [
   {
+    name: "Alert",
+    id: "alert",
+  },
+  {
     name: "Form",
-    id: "form"
+    id: "form",
   },
   {
     name: "Select",
-    id: "select"
+    id: "select",
   },
   {
     name: "Hello",
-    id: "hello"
+    id: "hello",
   },
   {
     name: "Tabs",
-    id: "tabs"
+    id: "tabs",
   },
   {
     name: "Modal",
-    id: "modal"
+    id: "modal",
   },
   {
     name: "Input",
-    id: "input"
+    id: "input",
   },
   {
     name: "Button",
-    id: "button"
+    id: "button",
   },
   {
     name: "Checkbox",
-    id: "checkbox"
+    id: "checkbox",
   },
   {
     name: "Switch",
-    id: "switch"
+    id: "switch",
   },
   {
     name: "Drawer",
-    id: "drawer"
-  }
+    id: "drawer",
+  },
 ];
