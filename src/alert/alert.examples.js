@@ -13,7 +13,14 @@ export default (context) => {
           name="Trouble Ahead"
           message="Something went wrong"
         />
-        <Alert severity="warning" message="Alert warning" />
+        <Alert
+          severity="warning"
+          message="Alert warning"
+          onRemove={(event) => {
+            // alert("Reomved");
+            event.preventDefault();
+          }}
+        />
         <Alert
           severity="info"
           message="Alert info message"

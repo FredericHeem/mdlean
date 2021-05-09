@@ -23,6 +23,8 @@ import drawerExamples from "./drawer/drawer.examples";
 import modalExamples from "./modal/modal.examples";
 import { bounce } from "./animation";
 import { createMuiTheme } from "@material-ui/core/styles";
+import { red, teal, orange, blue } from "@material-ui/core/colors";
+
 import { componentlist } from "./componentList";
 
 const context = {
@@ -30,7 +32,7 @@ const context = {
     t: (v) => v,
   },
   emitter: mitt(),
-
+  colors: { red, teal, orange, blue },
   palette: palette(),
   theme: createMuiTheme({
     palette: {
@@ -40,7 +42,6 @@ const context = {
     themeName: "Peggy",
   }),
 };
-console.log(context.theme);
 
 const NavBar = navBar(context);
 const SideBar = sideBar(context);
