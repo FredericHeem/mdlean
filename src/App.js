@@ -21,6 +21,8 @@ import inputExamples from "./input/input.examples";
 import buttonExamples from "./button/button.examples";
 import drawerExamples from "./drawer/drawer.examples";
 import modalExamples from "./modal/modal.examples";
+import wizardExamples from "./wizard/wizard.examples";
+
 import { bounce } from "./animation";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { red, teal, orange, blue } from "@material-ui/core/colors";
@@ -51,6 +53,7 @@ const FormExamples = formExamples(context);
 const TabsExamples = tabsExamples(context);
 
 const ModalExamples = modalExamples(context);
+const WizardExamples = wizardExamples(context);
 
 const CheckboxExamples = checkboxExamples(context);
 const SwitchExamples = switchExamples(context);
@@ -116,6 +119,7 @@ class App extends Component {
           <SwitchExamples />
           <DrawerExamples />
           <FormExamples />
+          <WizardExamples />
           <SideBar items={componentlist()} />
         </main>
       </div>

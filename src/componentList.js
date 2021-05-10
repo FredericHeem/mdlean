@@ -43,4 +43,8 @@ export const componentlist = () => [
     name: "Drawer",
     id: "drawer",
   },
+  {
+    name: "Wizard",
+    id: "wizard",
+  },
 ];
