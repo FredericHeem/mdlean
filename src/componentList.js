@@ -28,6 +28,10 @@ export const componentlist = () => [
     id: "input",
   },
   {
+    name: "File Input",
+    id: "file-input",
+  },
+  {
     name: "Button",
     id: "button",
   },

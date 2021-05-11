@@ -3,7 +3,6 @@ import { jsx, css } from "@emotion/react";
 
 export default ({ theme }, options = {}) => {
   const { palette, shape, shadows } = theme;
-  console.log(theme);
   const style = {
     base: css`
       position: relative;

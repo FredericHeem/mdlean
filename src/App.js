@@ -18,6 +18,8 @@ import switchExamples from "./switch/switch.examples";
 import alertExamples from "./alert/alert.examples";
 
 import inputExamples from "./input/input.examples";
+import fileInputExamples from "./fileInput/fileInput.examples";
+
 import buttonExamples from "./button/button.examples";
 import drawerExamples from "./drawer/drawer.examples";
 import modalExamples from "./modal/modal.examples";
@@ -57,6 +59,8 @@ const WizardExamples = wizardExamples(context);
 
 const CheckboxExamples = checkboxExamples(context);
 const SwitchExamples = switchExamples(context);
+const FileInputExamples = fileInputExamples(context);
+
 const InputExamples = inputExamples(context);
 const ButtonExamples = buttonExamples(context);
 const DrawerExamples = drawerExamples(context);
@@ -81,17 +85,6 @@ class App extends Component {
             top: 0;
           }
 
-          main {
-            grid-row: 2;
-            padding: 10px;
-            margin-top: 20px;
-            grid-column: 2 / 3;
-            > section {
-              padding: 10px;
-              margin: 10px;
-              box-shadow: ${context.theme.shadows[10]};
-            }
-          }
           @media (max-width: ${context.theme.breakpoints.values.sm}) {
             nav {
               visibility: hidden;
@@ -104,7 +97,19 @@ class App extends Component {
       >
         <NavBar />
 
-        <main>
+        <main
+          css={css`
+            grid-row: 2;
+            padding: 10px;
+            margin-top: 20px;
+            grid-column: 2 / 3;
+            section {
+              padding: 10px;
+              margin: 10px;
+              box-shadow: ${context.theme.shadows[10]};
+            }
+          `}
+        >
           <AlertExamples />
           <InputExamples />
           <FormExamples />
@@ -120,6 +125,7 @@ class App extends Component {
           <DrawerExamples />
           <FormExamples />
           <WizardExamples />
+          <FileInputExamples />
           <SideBar items={componentlist()} />
         </main>
       </div>
