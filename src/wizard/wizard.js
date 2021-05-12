@@ -3,30 +3,33 @@ import { jsx, css } from "@emotion/react";
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
 
-export default (context, { tabDefs = [] }) => {
+export default (context, { wizardDefs = [] }) => {
   const {
     emitter,
     theme: { palette },
   } = context;
 
   const store = observable({
-    tabs: tabDefs.map((tabDef, tabindex) => ({ ...tabDef, tabindex })),
-    activeName: tabDefs[0].name,
-    tabindex: 0,
+    tabs: wizardDefs.map((wizardDef, stepIndex) => ({
+      ...wizardDef,
+      stepIndex,
+    })),
+    activeName: wizardDefs[0].name,
+    stepIndex: 0,
     get current() {
-      return store.tabByName(store.activeName);
+      return store.stepByName(store.activeName);
     },
-    tabByName: (tabName) =>
-      store.tabs.find((tabItem) => tabName == tabItem.name),
-    isActive: (tab) => tab.tabindex === store.tabindex,
-    isPast: (tab) => tab.tabindex < store.tabindex,
-    isNext: (tab) => tab.tabindex > store.tabindex,
+    stepByName: (stepName) =>
+      store.tabs.find((tabItem) => stepName == tabItem.name),
+    isActive: (tab) => tab.stepIndex === store.stepIndex,
+    isPast: (tab) => tab.stepIndex < store.stepIndex,
+    isNext: (tab) => tab.stepIndex > store.stepIndex,
   });
 
   emitter.on(
-    "tab.select",
-    action(async (tabName) => {
-      const nextWizard = store.tabByName(tabName);
+    "step.select",
+    action(async (stepName) => {
+      const nextWizard = store.stepByName(stepName);
       if (!nextWizard) {
         return;
       }
@@ -35,7 +38,7 @@ export default (context, { tabDefs = [] }) => {
         exit && exit(store.current);
       }
       store.activeName = nextWizard.name;
-      store.tabindex = nextWizard.tabindex;
+      store.stepIndex = nextWizard.stepIndex;
       const { enter } = store.current;
       enter && enter();
     })
