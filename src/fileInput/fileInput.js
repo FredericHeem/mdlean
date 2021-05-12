@@ -70,7 +70,7 @@ export default ({ theme }, options = {}) => {
     });
   };
   return function FileInput(props) {
-    const { disabled, component, onChange, ...otherProps } = props;
+    const { disabled, component, onChange, cssOverride, ...otherProps } = props;
     return (
       <Lifecycle
         didMount={didMount}
@@ -79,7 +79,7 @@ export default ({ theme }, options = {}) => {
           style.base,
           disabled && style.disabled,
           props.styles,
-          options.cssOverride,
+          cssOverride,
         ]}
       >
         <label>

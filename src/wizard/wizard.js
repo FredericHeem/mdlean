@@ -26,16 +26,16 @@ export default (context, { tabDefs = [] }) => {
   emitter.on(
     "tab.select",
     action(async (tabName) => {
-      const nextTab = store.tabByName(tabName);
-      if (!nextTab) {
+      const nextWizard = store.tabByName(tabName);
+      if (!nextWizard) {
         return;
       }
       if (store.current) {
         const { exit } = store.current;
         exit && exit(store.current);
       }
-      store.activeName = nextTab.name;
-      store.tabindex = nextTab.tabindex;
+      store.activeName = nextWizard.name;
+      store.tabindex = nextWizard.tabindex;
       const { enter } = store.current;
       enter && enter();
     })
@@ -45,10 +45,10 @@ export default (context, { tabDefs = [] }) => {
     base: css`
       display: flex;
       flex-direction: column;
-      ul {
+      > ul {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
         padding: 0rem;
         list-style: none;
         counter-reset: step;
@@ -61,8 +61,9 @@ export default (context, { tabDefs = [] }) => {
         transition: 0.2s ease-in-out;
         overflow: hidden;
         position: relative;
-
-        header {
+        min-width: 20rem;
+        flex-grow: 0;
+        > header {
           padding: 1rem;
           font-weight: bold;
           ::before {
@@ -124,7 +125,7 @@ export default (context, { tabDefs = [] }) => {
     },
   };
 
-  const TabHeaderItem = observer(({ tab }) => (
+  const WizardHeaderItem = observer(({ tab }) => (
     <li
       css={[
         style.li.base,
@@ -138,12 +139,12 @@ export default (context, { tabDefs = [] }) => {
     </li>
   ));
 
-  const Tab = () => {
+  const Wizard = () => {
     return (
-      <div css={style.base}>
+      <div className="wizard" css={style.base}>
         <ul>
           {store.tabs.map((tab) => (
-            <TabHeaderItem key={tab.name} tab={tab} />
+            <WizardHeaderItem key={tab.name} tab={tab} />
           ))}
         </ul>
         <div>
@@ -161,6 +162,6 @@ export default (context, { tabDefs = [] }) => {
   };
   return {
     store,
-    View: observer(Tab),
+    View: observer(Wizard),
   };
 };
