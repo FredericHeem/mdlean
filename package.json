@@ -52,7 +52,8 @@
     "np": "^7.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "rubico": "^1.6.25"
   },
   "scripts": {
     "start": "react-scripts start",
