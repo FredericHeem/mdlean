@@ -19,14 +19,15 @@ export default (context) => {
         css={css`
           position: fixed;
           top: 100px;
+          bottom: 0px;
           left: 0;
           min-width: 150px;
-          overflow: auto;
+          overflow-y: scroll;
           box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
 
           ul {
             padding: 0;
-            li {
+            > li {
               cursor: pointer;
               margin: 20px 10px;
               list-style: none;

@@ -4,32 +4,8 @@ export const componentlist = () => [
     id: "alert",
   },
   {
-    name: "Form",
-    id: "form",
-  },
-  {
-    name: "Select",
-    id: "select",
-  },
-  {
-    name: "Hello",
-    id: "hello",
-  },
-  {
-    name: "Tabs",
-    id: "tabs",
-  },
-  {
-    name: "Modal",
-    id: "modal",
-  },
-  {
-    name: "Input",
-    id: "input",
-  },
-  {
-    name: "File Input",
-    id: "file-input",
+    name: "Alert Stack",
+    id: "alert-stack",
   },
   {
     name: "Button",
@@ -40,12 +16,36 @@ export const componentlist = () => [
     id: "checkbox",
   },
   {
+    name: "Drawer",
+    id: "drawer",
+  },
+  {
+    name: "File Input",
+    id: "file-input",
+  },
+  {
+    name: "Form",
+    id: "form",
+  },
+  {
+    name: "Input",
+    id: "input",
+  },
+  {
+    name: "Modal",
+    id: "modal",
+  },
+  {
+    name: "Select",
+    id: "select",
+  },
+  {
     name: "Switch",
     id: "switch",
   },
   {
-    name: "Drawer",
-    id: "drawer",
+    name: "Tabs",
+    id: "tabs",
   },
   {
     name: "Wizard",

@@ -1,15 +1,21 @@
 /** @jsxImportSource @emotion/react */
-import { jsx, css } from "@emotion/react";
-import { observable } from "mobx";
+import { css } from "@emotion/react";
 import { observer } from "mobx-react";
 
-export default ({ theme: { palette } }) => {
-  const style = {
-    base: css``,
-  };
-
-  const Form = observer(({ children }) => {
-    return <form>{children}</form>;
-  });
+export default () => {
+  const Form = observer(({ children }) => (
+    <form
+      css={css`
+        footer {
+          button {
+            margin: 1rem;
+          }
+        }
+      `}
+      onSubmit={(e) => e.preventDefault()}
+    >
+      {children}
+    </form>
+  ));
   return Form;
 };

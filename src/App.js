@@ -3,12 +3,14 @@ import { jsx, css } from "@emotion/react";
 import { Component } from "react";
 import { observer } from "mobx-react";
 import mitt from "mitt";
+import { createBrowserHistory } from "history";
 
 import "./App.css";
 import palette from "./palette";
 import navBar from "./examples/navBar";
 import sideBar from "./SideBar";
 import formExamples from "./form/form.examples";
+import alertStackExamples from "./alertStack/alertStack.examples";
 
 import selectExamples from "./select/select.examples";
 import helloExamples from "./hello/hello.examples";
@@ -28,6 +30,8 @@ import wizardExamples from "./wizard/wizard.examples";
 import { bounce } from "./animation";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { red, teal, orange, blue } from "@material-ui/core/colors";
+import alertStackCreate from "./alertStack";
+import Rest from "./utils/rest";
 
 import { componentlist } from "./componentList";
 
@@ -35,6 +39,7 @@ const context = {
   tr: {
     t: (v) => v,
   },
+  history: createBrowserHistory(),
   emitter: mitt(),
   colors: { red, teal, orange, blue },
   palette: palette(),
@@ -45,7 +50,11 @@ const context = {
     },
     themeName: "Peggy",
   }),
+  config: { apiUrl: "/api/v1/" },
 };
+
+context.alertStack = alertStackCreate(context, { limit: 3 });
+context.rest = Rest(context);
 
 const NavBar = navBar(context);
 const SideBar = sideBar(context);
@@ -66,6 +75,7 @@ const ButtonExamples = buttonExamples(context);
 const DrawerExamples = drawerExamples(context);
 const HelloExamples = helloExamples(context);
 const SelectExamples = selectExamples(context);
+const AlertStackExamples = alertStackExamples(context);
 
 class App extends Component {
   render() {
@@ -103,7 +113,7 @@ class App extends Component {
             padding: 10px;
             margin-top: 20px;
             grid-column: 2 / 3;
-            section {
+            > section {
               padding: 10px;
               margin: 10px;
               box-shadow: ${context.theme.shadows[10]};
@@ -111,21 +121,19 @@ class App extends Component {
           `}
         >
           <AlertExamples />
-          <InputExamples />
-          <FormExamples />
-          <SelectExamples />
-          <InputExamples />
-          <HelloExamples />
-          <TabsExamples />
-          <ModalExamples />
-          <InputExamples />
+          <AlertStackExamples />
           <ButtonExamples />
           <CheckboxExamples />
-          <SwitchExamples />
           <DrawerExamples />
           <FormExamples />
-          <WizardExamples />
+          <InputExamples />
+          <ModalExamples />
           <FileInputExamples />
+          <SelectExamples />
+          <SwitchExamples />
+          <TabsExamples />
+          <WizardExamples />
+          {/* Last One */}
           <SideBar items={componentlist()} />
         </main>
       </div>

@@ -7,6 +7,7 @@ import button from "../button";
 import wizard from "./wizard";
 import providerSelection from "./providerSelection";
 
+import awsConfig from "./awsConfig";
 import gcpConfig from "./gcpConfig";
 import azureConfig from "./azureConfig";
 
@@ -25,7 +26,7 @@ export default (context) => {
     },
   });
 
-  const AwsConfig = () => <div>AWS config</div>;
+  const AwsConfig = awsConfig(context);
   const GcpConfig = gcpConfig(context);
   const AzureConfig = azureConfig(context);
 
