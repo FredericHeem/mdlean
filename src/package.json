@@ -1,0 +1,39 @@
+{
+  "name": "mdlean",
+  "description": "Lean Material Design React Components",
+  "version": "0.39.0",
+  "license": "Apache-2.0",
+  "private": false,
+  "homepage": "https://fredericheem.github.io/mdlean/",
+  "keywords": [
+    "components",
+    "react",
+    "react-component",
+    "material design",
+    "emotion",
+    "theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FredericHeem/mdlean.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FredericHeem/mdlean/issues"
+  },
+  "peerDependencies": {
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "mobx": "*",
+    "mobx-react": "*",
+    "react": "*",
+    "react-dom": "*",
+    "rubico": "*"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4"
+  },
+  "scripts": {
+    "deploy": "gh-pages -d build",
+    "np": "np"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "mdlean-test",
+  "description": "Lean Material Design React Components Test",
+  "version": "0.39.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^4.11.4",
+    "axios": "^0.21.1",
+    "history": "^5.0.0",
+    "mitt": "^2.1.0",
+    "mobx": "^6.3.0",
+    "mobx-react": "^7.1.0",
+    "np": "^7.5.0",
+    "qs": "^6.10.1",
+    "rubico": "^1.6.25",
+    "validate.js": "^0.13.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "faker": "^5.5.3",
+    "gh-pages": "^3.1.0",
+    "np": "^7.5.0",
+    "react-scripts": "^4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

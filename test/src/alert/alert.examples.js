@@ -1,5 +1,5 @@
 import * as React from "react";
-import alert from "./alert";
+import alert from "mdlean/alert";
 
 export default (context) => {
   const { tr } = context;
