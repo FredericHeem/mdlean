@@ -35,5 +35,8 @@
   "scripts": {
     "deploy": "gh-pages -d build",
     "np": "np"
+  },
+  "devDependencies": {
+    "np": "^7.5.0"
   }
 }
