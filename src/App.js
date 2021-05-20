@@ -6,7 +6,6 @@ import mitt from "mitt";
 import { createBrowserHistory } from "history";
 
 import "./App.css";
-import palette from "./palette";
 import navBar from "./examples/navBar";
 import sideBar from "./SideBar";
 import formExamples from "./form/form.examples";
@@ -42,7 +41,6 @@ const context = {
   history: createBrowserHistory(),
   emitter: mitt(),
   colors: { red, teal, orange, blue },
-  palette: palette(),
   theme: createMuiTheme({
     palette: {
       primary: { main: "#3f51b5" },
