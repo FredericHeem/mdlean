@@ -162,6 +162,7 @@ export default (
           options.cssOverride,
         ],
         href: href,
+        ...(!href && { type: "button" }),
         ...otherProps,
       },
       icon && <span css={styles.icon}>{icon}</span>,
