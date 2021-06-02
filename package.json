@@ -66,6 +66,7 @@
     "test": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build:babel": "babel src --out-dir lib",
+    "build:watch": "babel src --out-dir lib -w",
     "prepublish": "npm run build:babel",
     "version": "npm test",
     "postversion": "git push && git push --tags && npm run deploy",
