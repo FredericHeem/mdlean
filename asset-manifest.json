@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mdlean/static/css/main.f8f081d6.chunk.css",
-    "main.js": "/mdlean/static/js/main.e50b078e.chunk.js",
-    "main.js.map": "/mdlean/static/js/main.e50b078e.chunk.js.map",
+    "main.js": "/mdlean/static/js/main.a1486b33.chunk.js",
+    "main.js.map": "/mdlean/static/js/main.a1486b33.chunk.js.map",
     "runtime-main.js": "/mdlean/static/js/runtime-main.d69caf03.js",
     "runtime-main.js.map": "/mdlean/static/js/runtime-main.d69caf03.js.map",
-    "static/js/2.9fdfbdb6.chunk.js": "/mdlean/static/js/2.9fdfbdb6.chunk.js",
-    "static/js/2.9fdfbdb6.chunk.js.map": "/mdlean/static/js/2.9fdfbdb6.chunk.js.map",
+    "static/js/2.03620287.chunk.js": "/mdlean/static/js/2.03620287.chunk.js",
+    "static/js/2.03620287.chunk.js.map": "/mdlean/static/js/2.03620287.chunk.js.map",
     "index.html": "/mdlean/index.html",
     "static/css/main.f8f081d6.chunk.css.map": "/mdlean/static/css/main.f8f081d6.chunk.css.map",
-    "static/js/2.9fdfbdb6.chunk.js.LICENSE.txt": "/mdlean/static/js/2.9fdfbdb6.chunk.js.LICENSE.txt",
+    "static/js/2.03620287.chunk.js.LICENSE.txt": "/mdlean/static/js/2.03620287.chunk.js.LICENSE.txt",
     "static/media/aws.3153b3cb.svg": "/mdlean/static/media/aws.3153b3cb.svg",
     "static/media/azure.e9676a20.svg": "/mdlean/static/media/azure.e9676a20.svg",
     "static/media/facebook.72cbde5a.svg": "/mdlean/static/media/facebook.72cbde5a.svg",
@@ -18,8 +18,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.d69caf03.js",
-    "static/js/2.9fdfbdb6.chunk.js",
+    "static/js/2.03620287.chunk.js",
     "static/css/main.f8f081d6.chunk.css",
-    "static/js/main.e50b078e.chunk.js"
+    "static/js/main.a1486b33.chunk.js"
   ]
 }
