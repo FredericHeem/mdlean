@@ -64,7 +64,6 @@ export default (context, { wizardDefs = [] }) => {
         transition: 0.2s ease-in-out;
         overflow: hidden;
         position: relative;
-        min-width: 20rem;
         flex-grow: 0;
         > header {
           padding: 1rem;
