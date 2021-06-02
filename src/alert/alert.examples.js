@@ -11,7 +11,7 @@ export default (context) => {
         <Alert
           severity="error"
           name="Trouble Ahead"
-          message="Something went wrong"
+          message="Error occured while trying to proxy to: localhost:8080/api/v1/me"
         />
         <Alert
           severity="warning"

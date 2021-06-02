@@ -35,9 +35,8 @@ export default ({ tr, colors, theme: { palette, shadows, shape } }) => {
     max-width: 600px;
     justify-content: flex-start;
     align-items: stretch;
-    margin: 1rem;
+    margin: 0.5rem;
     font-weight: 500;
-    text-align: center;
     box-shadow: ${shadows[5]};
     border-radius: ${shape.borderRadius}px;
   `;
