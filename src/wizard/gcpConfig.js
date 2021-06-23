@@ -20,7 +20,7 @@ const gcpConfig = (context) => {
     content: {},
     error: "",
     nextStep: () => {
-      emitter.emit("step.select", "Scan");
+      emitter.emit("step.next");
     },
     setProjectName: (projectName) => {
       store.projectName = projectName;
@@ -197,9 +197,7 @@ const gcpConfig = (context) => {
         )}
       </main>
       <footer>
-        <Button
-          onClick={() => emitter.emit("step.select", "ProviderSelection")}
-        >
+        <Button onClick={() => emitter.emit("step.previous")}>
           {"\u25c0"} Back
         </Button>
         <Button

@@ -19,7 +19,7 @@ export default (context) => {
     providerType: "",
     selectProvider: (providerType) => {
       store.providerType = providerType;
-      emitter.emit("step.select", "Configuration");
+      emitter.emit("step.next");
     },
     setProvider: (providerType) => {
       store.providerType = providerType;

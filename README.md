@@ -62,3 +62,14 @@ Invoke `np` through the _npm_ scripts;
 ```sh
 npm run np
 ```
+
+## Npm link
+
+When this lib is linked, avoid the [invalid hook call warning](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react) with:
+
+```
+npm link
+npm link ../myapp/node_modules/react
+cd ../myapp
+npm link mdlean
+```

@@ -133,9 +133,7 @@ export default (context) => {
         </ol>
       </main>
       <footer>
-        <Button
-          onClick={() => emitter.emit("step.select", "ProviderSelection")}
-        >
+        <Button onClick={() => emitter.emit("step.previous")}>
           {"\u25c0"} Back
         </Button>
         <Button

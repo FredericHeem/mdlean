@@ -24,6 +24,12 @@ export default (context, { wizardDefs = [] }) => {
     isActive: (tab) => tab.stepIndex === store.stepIndex,
     isPast: (tab) => tab.stepIndex < store.stepIndex,
     isNext: (tab) => tab.stepIndex > store.stepIndex,
+    get isFirst() {
+      return store.stepIndex === 0;
+    },
+    get isLast() {
+      return store.stepIndex === store.tabs.length;
+    },
   });
 
   emitter.on(
@@ -43,7 +49,44 @@ export default (context, { wizardDefs = [] }) => {
       enter && enter();
     })
   );
+  emitter.on(
+    "step.next",
+    action(async () => {
+      if (store.isLast) {
+        return;
+      }
 
+      if (store.current) {
+        const { exit } = store.current;
+        exit && exit(store.current);
+      }
+
+      store.stepIndex = store.stepIndex + 1;
+      store.activeName = store.tabs[store.stepIndex].name;
+
+      const { enter } = store.current;
+      enter && enter();
+    })
+  );
+  emitter.on(
+    "step.previous",
+    action(async () => {
+      if (store.isFirst) {
+        return;
+      }
+
+      if (store.current) {
+        const { exit } = store.current;
+        exit && exit(store.current);
+      }
+
+      store.stepIndex = store.stepIndex - 1;
+      store.activeName = store.tabs[store.stepIndex].name;
+
+      const { enter } = store.current;
+      enter && enter();
+    })
+  );
   const style = {
     base: css`
       display: flex;
