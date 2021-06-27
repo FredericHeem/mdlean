@@ -57,8 +57,7 @@ export default ({ theme: { shadows, palette } }) => {
             margin: 12px;
           }
         }
-        > div {
-          margin: 0rem 1rem 0 1rem;
+        > main {
           flex-grow: 1;
           overflow: scroll;
         }
