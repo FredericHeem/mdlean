@@ -1,39 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { get } from "rubico";
-import { isString } from "rubico/x";
 import { observable, action, runInAction } from "mobx";
-import alert from "../alert";
-
-function createHttpError(payload = {}) {
-  const { response = {} } = payload;
-  function name() {
-    if (isString(response)) {
-      return response;
-    }
-    return response.statusText;
-  }
-  function message() {
-    const { data } = response;
-    if (isString(data)) {
-      return data;
-    }
-    if (data && isString(data.message)) {
-      return data.message;
-    }
-    if (payload.message) {
-      return payload.message;
-    }
-  }
-  const errorOut = {
-    name: name(),
-    code: response.status,
-    message: message(),
-  };
-  return errorOut;
-}
+import alertAxios from "../alertAjax";
 
 export default (context) => {
-  const Alert = alert(context);
+  const AlertAxios = alertAxios(context);
   return function create(api) {
     const store = observable({
       loading: false,
@@ -46,7 +17,6 @@ export default (context) => {
             store.loading = true;
             store.error = null;
           });
-          console.log("fetch ");
           const response = await api(...input);
           runInAction(() => {
             store.data = response;
@@ -59,23 +29,13 @@ export default (context) => {
             store.error = error;
           });
           const status = get("response.status")(error);
+
           if (![401, 403, 422].includes(status)) {
             context.alertStack.add(
-              <Alert
-                data-alert-error
-                severity="error"
-                {...createHttpError(error)}
-              />
-            );
-          } else if (!status) {
-            context.alertStack.add(
-              <Alert
-                data-alert-error
-                severity="error"
-                message={error.toString()}
-              />
+              <AlertAxios data-alert-error severity="error" error={error} />
             );
           }
+
           throw error;
         } finally {
           runInAction(() => {

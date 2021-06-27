@@ -49,7 +49,15 @@ export default ({ tr, colors, theme: { palette, shadows, shape } }) => {
     return style;
   };
 
-  const Alert = ({ name, severity, message, code, onRemove, ...other }) => {
+  const Alert = ({
+    name,
+    severity,
+    message,
+    details,
+    code,
+    onRemove,
+    ...other
+  }) => {
     const style = severityToStyle({ severity, message });
 
     return (
@@ -82,7 +90,8 @@ export default ({ tr, colors, theme: { palette, shadows, shape } }) => {
               {tr.t(name)} {code && `(${code})`}
             </h3>
           )}
-          <p>{message}</p>
+          <h4>{message}</h4>
+          <pre>{details}</pre>
         </div>
         <div
           css={css`
