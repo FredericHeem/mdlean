@@ -11,12 +11,14 @@ export default (context) => {
     if (!error) {
       return null;
     }
-    if (![401, 422].includes(get(error, "response.status"))) {
+    if (![401, 403, 422].includes(get(error, "response.status"))) {
       return null;
     }
 
     const message = get("response.data.error.message", error.message)(error);
 
-    return <Alert severity="error" {...other} message={message} />;
+    return (
+      <Alert data-alert-error severity="error" {...other} message={message} />
+    );
   };
 };
