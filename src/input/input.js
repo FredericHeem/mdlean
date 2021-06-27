@@ -70,7 +70,7 @@ export default ({ theme }, options = {}) => {
     `,
   };
   return function Input(props) {
-    const { id, disabled, label, onChange, error, ...otherProps } = props;
+    const { name, id, disabled, label, onChange, error, ...otherProps } = props;
     return (
       <div
         css={[
@@ -86,11 +86,12 @@ export default ({ theme }, options = {}) => {
           required="required"
           disabled={disabled}
           id={id}
+          name={name}
           onChange={onChange}
           {...otherProps}
         />
         {label && <label htmlFor={id}>{label}</label>}
-        <div>{error}</div>
+        <div data-input-error={name}>{error}</div>
       </div>
     );
   };
