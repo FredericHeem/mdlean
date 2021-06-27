@@ -58,14 +58,22 @@ export default (context) => {
           runInAction(() => {
             store.error = error;
           });
-          const status = get(error, "response.status");
-          if (![401, 422].includes(status)) {
+          const status = get("response.status")(error);
+          if (![401, 403, 422].includes(status)) {
             context.alertStack.add(
-              <Alert severity="error" {...createHttpError(error)} />
+              <Alert
+                data-alert-error
+                severity="error"
+                {...createHttpError(error)}
+              />
             );
           } else if (!status) {
             context.alertStack.add(
-              <Alert severity="error" message={error.toString()} />
+              <Alert
+                data-alert-error
+                severity="error"
+                message={error.toString()}
+              />
             );
           }
           throw error;
