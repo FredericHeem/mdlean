@@ -1,13 +1,21 @@
 /* @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
-import { jsx, keyframes } from "@emotion/react";
+import { css, jsx, keyframes } from "@emotion/react";
 
 const SvgView = styled("svg")({});
 
 export default () =>
-  function Spinner({ size = 36, color = "black", ...props }) {
+  function Spinner({
+    size = 36,
+    color = "black",
+    visibility = true,
+    ...props
+  }) {
     return (
       <SvgView
+        css={css`
+          visibility: ${visibility ? "visible" : "hidden"};
+        `}
         {...props}
         version="1.1"
         id="L6"
