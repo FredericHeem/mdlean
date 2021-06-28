@@ -17,6 +17,7 @@ import tabsExamples from "./tabs/tabs.examples";
 import checkboxExamples from "./checkbox/checkbox.examples";
 import switchExamples from "./switch/switch.examples";
 import alertExamples from "./alert/alert.examples";
+import listExamples from "./list/example/list.examples";
 
 import inputExamples from "./input/input.examples";
 import fileInputExamples from "./fileInput/fileInput.examples";
@@ -60,7 +61,7 @@ const SideBar = sideBar(context);
 const AlertExamples = alertExamples(context);
 const FormExamples = formExamples(context);
 const TabsExamples = tabsExamples(context);
-
+const ListExamples = listExamples(context);
 const ModalExamples = modalExamples(context);
 const WizardExamples = wizardExamples(context);
 
@@ -125,6 +126,7 @@ class App extends Component {
           <DrawerExamples />
           <FormExamples />
           <InputExamples />
+          <ListExamples />
           <ModalExamples />
           <FileInputExamples />
           <SelectExamples />

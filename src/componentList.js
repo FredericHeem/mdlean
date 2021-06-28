@@ -32,6 +32,10 @@ export const componentlist = () => [
     id: "input",
   },
   {
+    name: "List",
+    id: "list",
+  },
+  {
     name: "Modal",
     id: "modal",
   },

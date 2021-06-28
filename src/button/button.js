@@ -10,6 +10,7 @@ export default (
       color: ${palette.text.primary};
       display: inline-flex;
       align-items: center;
+
       justify-content: center;
       position: relative;
       padding: 0 0.5rem;
