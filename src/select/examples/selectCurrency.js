@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 import select from "../select";
-import * as faker from "faker";
+import { faker } from "@faker-js/faker";
 
 export default (context) => {
   const currencies = Array(30)

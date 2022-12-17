@@ -28,8 +28,8 @@ import modalExamples from "./modal/modal.examples";
 import wizardExamples from "./wizard/wizard.examples";
 
 import { bounce } from "./animation";
-import { createMuiTheme } from "@material-ui/core/styles";
-import { red, teal, orange, blue } from "@material-ui/core/colors";
+import { createTheme } from "@mui/material/styles";
+import { red, teal, orange, blue } from "@mui/material/colors";
 import alertStackCreate from "./alertStack";
 import Rest from "./utils/rest";
 
@@ -42,7 +42,7 @@ const context = {
   history: createBrowserHistory(),
   emitter: mitt(),
   colors: { red, teal, orange, blue },
-  theme: createMuiTheme({
+  theme: createTheme({
     palette: {
       primary: { main: "#3f51b5" },
       secondary: { main: "#f50057" },

@@ -2,7 +2,6 @@
 import { jsx, css } from "@emotion/react";
 import { observer } from "mobx-react";
 import hello from "./hello";
-import * as faker from "faker";
 
 export default (context) => {
   const { tr } = context;

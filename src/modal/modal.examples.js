@@ -4,7 +4,7 @@ import { observable } from "mobx";
 import { observer } from "mobx-react";
 import modal from "./modal";
 import button from "../button";
-import * as faker from "faker";
+import { faker } from "@faker-js/faker";
 
 export default (context) => {
   const { tr } = context;
