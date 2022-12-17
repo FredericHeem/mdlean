@@ -31,7 +31,6 @@ import { bounce } from "./animation";
 import { createTheme } from "@mui/material/styles";
 import { red, teal, orange, blue } from "@mui/material/colors";
 import alertStackCreate from "./alertStack";
-import Rest from "./utils/rest";
 
 import { componentlist } from "./componentList";
 
@@ -53,7 +52,6 @@ const context = {
 };
 
 context.alertStack = alertStackCreate(context, { limit: 3 });
-context.rest = Rest(context);
 
 const NavBar = navBar(context);
 const SideBar = sideBar(context);
