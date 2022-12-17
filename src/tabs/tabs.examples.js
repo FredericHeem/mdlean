@@ -3,7 +3,7 @@ import { jsx, css } from "@emotion/react";
 import { observer } from "mobx-react";
 import button from "../button";
 import createTabs from "./tabs";
-import * as faker from "faker";
+import { faker } from "@faker-js/faker";
 
 export default (context) => {
   const { tr, emitter } = context;
