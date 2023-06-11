@@ -25,6 +25,8 @@ import fileInputExamples from "./fileInput/fileInput.examples";
 import buttonExamples from "./button/button.examples";
 import drawerExamples from "./drawer/drawer.examples";
 import modalExamples from "./modal/modal.examples";
+import spinnerExamples from "./spinner/spinner.examples";
+
 import wizardExamples from "./wizard/wizard.examples";
 
 import { bounce } from "./animation";
@@ -73,6 +75,7 @@ const DrawerExamples = drawerExamples(context);
 const HelloExamples = helloExamples(context);
 const SelectExamples = selectExamples(context);
 const AlertStackExamples = alertStackExamples(context);
+const SpinnerExamples = spinnerExamples(context);
 
 class App extends Component {
   render() {
@@ -128,6 +131,7 @@ class App extends Component {
           <ModalExamples />
           <FileInputExamples />
           <SelectExamples />
+          <SpinnerExamples />
           <SwitchExamples />
           <TabsExamples />
           <WizardExamples />
